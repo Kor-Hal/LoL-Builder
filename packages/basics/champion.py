@@ -6,9 +6,9 @@ class Champion:
   
   """
   
-  def __init__(self, baseHP, baseHPPlus, baseHP5, baseHP5Plus, baseMP, baseMPPlus, 
-              baseMP5, baseMP5Plus, baseAD, baseADPlus, baseAS, baseASPlus, baseAR, baseARPlus, 
-              baseMR, baseMRPlus, baseMS, baseRange,
+  def __init__(self, base_hp, base_hp_plus, base_hp5, base_hp5_plus, base_mp, base_mp_plus, 
+              base_mp5, base_mp5_plus, base_ad, base_ad_plus, base_as, base_as_plus, base_ar, base_ar_plus, 
+              base_mr, base_mr_plus, base_ms, base_range,
               abilities,
               masteries,
               runes,
@@ -16,24 +16,24 @@ class Champion:
     """ Initializing the basic stats.
     
     Named parameters :
-    baseHP -- Base health
-    baseHPPlus -- Base health per level
-    baseHP5 -- Base health regeneration
-    baseHP5Plus -- Base health regeneration per level
-    baseMP -- Base mana/energy
-    baseMPPlus -- Base mana/energy per level
-    baseMP5 -- Base mana/energy regeneration
-    baseMP5Plus -- Base mana/energy regeneration per level
-    baseAD -- Base attack damage
-    baseADPlus -- Base attack damage per level
-    baseAS -- Base attack speed
-    baseASPlus -- Base attack speed per level
-    baseAR -- Base armor
-    baseARPlus -- Base armor per level
-    baseMR -- Base magic resistance
-    baseMRPlus -- Base magic resistance per level
-    baseMS -- Base movement speed
-    baseRange -- Base range
+    base_hp -- Base health
+    base_hp_plus -- Base health per level
+    base_hp5 -- Base health regeneration
+    base_hp5_plus -- Base health regeneration per level
+    base_mp -- Base mana/energy
+    base_mp_plus -- Base mana/energy per level
+    base_mp5 -- Base mana/energy regeneration
+    base_mp5_plus -- Base mana/energy regeneration per level
+    base_ad -- Base attack damage
+    base_ad_plus -- Base attack damage per level
+    base_as -- Base attack speed
+    base_as_plus -- Base attack speed per level
+    base_ar -- Base armor
+    base_ar_plus -- Base armor per level
+    base_mr -- Base magic resistance
+    base_mr_plus -- Base magic resistance per level
+    base_ms -- Base movement speed
+    base_range -- Base range
     abilities -- Champion's abilities
     masteries -- Champion's masteries
     runes -- Champion's runes
@@ -41,24 +41,24 @@ class Champion:
     
     """
     
-    self.baseHP = baseHP
-    self.baseHPPlus = baseHPPlus
-    self.baseHP5 = baseHP5
-    self.baseHP5Plus = baseHP5Plus
-    self.baseMP = baseMP
-    self.baseMPPlus = baseMPPlus
-    self.baseMP5 = baseMP5
-    self.baseMP5Plus = baseMP5Plus
-    self.baseAD = baseAD
-    self.baseADPlus = baseADPlus
-    self.baseAS = baseAS
-    self.baseASPlus = baseASPlus
-    self.baseAR = baseAR
-    self.baseARPlus = baseARPlus
-    self.baseMR = baseMR
-    self.baseMRPlus = baseMRPlus
-    self.baseMS = baseMS
-    self.baseRange = baseRange
+    self.base_hp = base_hp
+    self.base_hp_plus = base_hp_plus
+    self.base_hp5 = base_hp5
+    self.base_hp5_plus = base_hp5_plus
+    self.base_mp = base_mp
+    self.base_mp_plus = base_mp_plus
+    self.base_mp5 = base_mp5
+    self.base_mp5_plus = base_mp5_plus
+    self.base_ad = base_ad
+    self.base_ad_plus = base_ad_plus
+    self.base_as = base_as
+    self.base_as_plus = base_as_plus
+    self.base_ar = base_ar
+    self.base_ar_plus = base_ar_plus
+    self.base_mr = base_mr
+    self.base_mr_plus = base_mr_plus
+    self.base_ms = base_ms
+    self.base_range = base_range
     self.abilities = abilities
     self.masteries = masteries
     self.runes = runes
@@ -66,38 +66,38 @@ class Champion:
   
   # Functions calculating basic stats. Attack Speed is special, because it's not an addition
   def curr_base_hp(self, level):
-    return self.baseHP + self.baseHPPlus * (level + 1)
+    return self.base_hp + self.base_hp_plus * (level + 1)
   def curr_base_hp5(self, level):
-    return self.baseHP5 + self.baseHP5 * (level + 1)
+    return self.base_hp5 + self.base_hp5 * (level + 1)
   def curr_base_mp(self, level):
-    return self.baseMP + self.baseMP * (level + 1)
+    return self.base_mp + self.base_mp * (level + 1)
   def curr_base_mp5(self, level):
-    return self.baseMP5 + self.baseMP5 * (level + 1)
+    return self.base_mp5 + self.base_mp5 * (level + 1)
   def curr_base_ad(self, level):
-    return self.baseAD + self.baseAD * (level + 1)
+    return self.base_ad + self.base_ad * (level + 1)
   def curr_base_ar(self, level):
-    return self.baseAR + self.baseAR * (level + 1)
+    return self.base_ar + self.base_ar * (level + 1)
   def curr_base_mr(self, level):
-    return self.baseMR + self.baseMR * (level + 1)
+    return self.base_mr + self.base_mr * (level + 1)
   
   # Defining current stats functions. They'll be implemented in every subclass that needs specific calculations
   def curr_hp(self, level):
-    return round(self.baseHP + self.baseHPPlus * level, 2)
+    return round(self.base_hp + self.base_hp_plus * level, 2)
   def curr_hp5(self, level):
-    return round(self.baseHP5 + self.baseHP5Plus * level, 2)
+    return round(self.base_hp5 + self.base_hp5_plus * level, 2)
   def curr_mp(self, level):
-    return round(self.baseMP + self.baseMPPlus * level, 2)
+    return round(self.base_mp + self.base_mp_plus * level, 2)
   def curr_mp5(self, level):
-    return round(self.baseMP5 + self.baseMP5Plus * level, 2)
+    return round(self.base_mp5 + self.base_mp5_plus * level, 2)
   def curr_ad(self, level):
-    return round(self.baseAD + self.baseADPlus * level, 2)
+    return round(self.base_ad + self.base_ad_plus * level, 2)
   def curr_as(self, level):
-    return round(self.baseAS * (1 + self.baseASPlus * (level - 1)), 3)
+    return round(self.base_as * (1 + self.base_as_plus * (level - 1)), 3)
   def curr_ar(self, level):
-    return round(self.baseAR + self.baseARPlus * level, 2)
+    return round(self.base_ar + self.base_ar_plus * level, 2)
   def curr_mr(self, level):
-    return round(self.baseMR + self.baseMRPlus * level, 2)
+    return round(self.base_mr + self.base_mr_plus * level, 2)
   def curr_ms(self, level):
-    return self.baseMS
+    return self.base_ms
   def curr_range(self, level):
-    return self.baseRange
+    return self.base_range

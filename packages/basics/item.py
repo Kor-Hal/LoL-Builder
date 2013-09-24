@@ -6,12 +6,12 @@ class Item:
   """
   
   def __init__(self, availability, tier, cost, menu, recipe, actives, passives, 
-               bonusArPen, bonusAD, bonusAS, bonusCSC, bonusCSD, bonusLS, bonusMS, 
-               bonusAR, bonusHP, bonusHP5, bonusMR, 
-               bonusAP, bonusCDR, bonusMPen, bonusMP, bonusMP5, bonusSV):
+               armor_penetration, attack_damage, attack_speed, critical_strike_chance, critical_strike_damage, 
+               life_steal, movement_speed, armor, health, health_regeneration, magic_resistance, 
+               ability_power, cooldown_reduction, magic_penetration, mana, mana_regeneration, spell_vamp):
     """ Initializing the item's stats.
     
-    Named parameters :
+    Named parmorameters :
     availability -- Map on which the item may be bought
     tier -- Item's tier (Consumable, Basic, Advanced, Legendary, Mythical)
     cost -- Item's cost
@@ -19,23 +19,23 @@ class Item:
     recipe -- Item's recipe (List of items)
     actives -- Tuple of actives (descriptions)
     passives -- Tuple of passives (descriptions)
-    bonusArPen -- Bonus Armor Penetration
-    bonusAD -- Bonus Attack Damage
-    bonusAS -- Bonus Attack Speed
-    bonusCSC -- Bonus Critical Strike Chance
-    bonusCSD -- Bonus Critical Strike Damage
-    bonusLS -- Bonus Life Steal
-    bonus MS -- Bonus Movement Speed
-    bonusAR -- Bonus Armor
-    bonusHP -- Bonus Health
-    bonusHP5 -- Bonus Health Regeneration
-    bonusMR -- Bonus Magic Resistance
-    bonusAP -- Bonus Ability Power
-    bonusCDR -- Bonus Cooldown Reduction
-    bonusMPen -- Bonus Magic Penetration
-    bonus MP -- Bonus Mana
-    bonusMP5 -- Bonus Mana Regeneration
-    bonusSV -- Bonus Spell Vamp
+    armor_penetration -- Bonus Armor Penetration
+    attack_damage -- Bonus Attack Damage
+    attack_speed -- Bonus Attack Speed
+    critical_strike_chance -- Bonus Critical Strike Chance
+    critical_strike_damage -- Bonus Critical Strike Damage
+    life_steal -- Bonus Life Steal
+    movement_speed -- Bonus Movement Speed
+    armor -- Bonus Armor
+    health -- Bonus Health
+    health_regeneration -- Bonus Health Regeneration
+    magic_resistance -- Bonus Magic Resistance
+    ability_power -- Bonus Ability Power
+    cooldown_reduction -- Bonus Cooldown Reduction
+    magic_penetration -- Bonus Magic Penetration
+    mana -- Bonus Mana
+    mana_regeneration -- Bonus Mana Regeneration
+    spell_vamp -- Bonus Spell Vamp
         
     """
     
@@ -46,20 +46,20 @@ class Item:
     self.recipe = recipe
     self.actives = actives
     self.passives = passives
-    self.bonusArPen = bonusArPen
-    self.bonusAD = bonusAD
-    self.bonusAS = bonusAS
-    self.bonusCSC = bonusCSC
-    self.bonusCSD = bonusCSD
-    self.bonusLS = bonusLS
-    self.bonusMS = bonusMS
-    self.bonusAR = bonusAR
-    self.bonusHP = bonusHP
-    self.bonusHP5 = bonusHP5
-    self.bonusMR = bonusMR
-    self.bonusAP = bonusAP
-    self.bonusCDR = bonusCDR
-    self.bonusMPen = bonusMPen
-    self.bonusMP = bonusMP
-    self.bonusMP5 = bonusMP5
-    self.bonusSV = bonusSV
+    self.armor_penetration = armor_penetration
+    self.attack_damage = attack_damage
+    self.attack_speed = attack_speed
+    self.critical_strike_chance = critical_strike_chance
+    self.critical_strike_damage = critical_strike_damage
+    self.life_steal = life_steal
+    self.movement_speed = movement_speed
+    self.armor = armor
+    self.health = health
+    self.health_regeneration = health_regeneration
+    self.magic_resistance = magic_resistance
+    self.ability_power = ability_power
+    self.cooldown_reduction = cooldown_reduction
+    self.magic_penetration = magic_penetration
+    self.mana = mana
+    self.mana_regeneration = mana_regeneration
+    self.spell_vamp = spell_vamp

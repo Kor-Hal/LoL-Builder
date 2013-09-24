@@ -23,7 +23,7 @@ class Ability:
     self.name = name
     self.description = description
     self.archetype = archetype
-    self.kind = kind # Can't name it type because of Python's reserved word
+    self.kind = kind
     self.cooldown = cooldown
     self.cost = cost
-    self.reach = reach # Can't name it range because of Python's reserved word
+    self.reach = reach
