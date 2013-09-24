@@ -33,3 +33,12 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# backup files
+*.bak
+
+# pickle files
+*.pickle
+
+# database files
+*.s3db
