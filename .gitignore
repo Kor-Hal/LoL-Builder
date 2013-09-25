@@ -36,3 +36,9 @@ nosetests.xml
 
 # backup files
 *.bak
+
+# pickle files
+*.pickle
+
+# database files
+*.s3db

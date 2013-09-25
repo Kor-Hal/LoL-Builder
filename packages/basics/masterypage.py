@@ -1,6 +1,6 @@
 # -*-coding:Latin-1 -*
-class Mastery:
-  """ Defines a Mastery.
+class Mastery(object):
+  """Defines a Mastery.
   
   Ref : http://leagueoflegends.wikia.com/wiki/Mastery
   
@@ -10,7 +10,7 @@ class Mastery:
     """ Create a new Mastery.
     
     Named parameters :
-    tree -- Mastery's tree (Offense, Defense or Utility)
+    tree -- Mastery's tree
     name -- Mastery's name
     description -- Mastery's description
     ranks -- Values of the different mastery's ranks
@@ -32,11 +32,9 @@ class Mastery:
     self._mastery_prerequisite = mastery_prerequisite
     self._icon = icon
   
-  # Read-only properties
-  
   @property
   def tree(self):
-    """Mastery's tree (Offense, Defense or Utility)."""
+    """Mastery's tree."""
     return self._tree
   
   @property
@@ -82,32 +80,71 @@ class Mastery:
     return self._level
   
   @level.setter
-  def level(self, value, pointsInTree):
-    if pointsInTree >= self._points_prerequisite and self._mastery_prerequisite.level == self._mastery_prerequisite.max_points:
+  def level(self, value):
+    if self.tree.points_spent >= self.points_prerequisite and \
+        self.mastery_prerequisite.level == self.mastery_prerequisite.max_points and \
+        value <= self.max_points:
       self._level = value
+      self.tree.points_spent += value
   
   def curr_value(self):
-    return self.ranks[self.level]
+    return self.ranks[self.level - 1]
 
-class MasteryPage:
-  """ Defines a Mastery page, with the 3 trees.
+class MasteryTree(object):
+  """Defines a Mastery tree.
+  
+  Ref : http://leagueoflegends.wikia.com/wiki/Mastery
+  
+  """
+    
+  def __init__(self, name, masteries):
+    """Create a new mastery tree.
+    
+    Named parameters :
+    name -- Mastery page's name
+    masteries -- Dict of this tree's masteries
+    points_spent -- Points spent in the tree
+    
+    """
+    
+    self._name = name
+    self._masteries = masteries
+    self.points_spent = 0
+    
+    @property
+    def name(self):
+      """Mastery tree's name."""
+      return self._name
+    
+    @property
+    def masteries(self):
+      """Dict of this tree's masteries."""
+      return self._masteries
+
+class MasteryPage(object):
+  """Defines a Mastery page, with the 3 trees.
   
   Ref : http://leagueoflegends.wikia.com/wiki/Mastery
   
   """
     
   def __init__(self, name):
-    """ Create a new empty Mastery page.
+    """Create a new empty Mastery page.
     
     Named parameters :
     name -- Mastery page's name
     
     """
     
-    self.name = name
+    self._name = name
     
-    # Offense tree
-    self.offense_tree = {}
+    @property
+    def name(self):
+      """Mastery page's name."""
+      return self._name
+    
+    # Offense masteries
+    offense_masteries = {}
     
     # Tier 1
     summoners_wrath = Mastery("Offense", ("Summoner's Wrath", "Exhaust: Lowers the target's armor and magic resistance by "
@@ -118,10 +155,10 @@ class MasteryPage:
     butcher = Mastery("Offense", "Butcher", "Basic attacks deal {} bonus physical damage to minions and monsters.",
     (2,4), 0, 2, 0)
     
-    self.offense_tree[(1,1)] = summoners_wrath
-    self.offense_tree[(1,2)] = fury
-    self.offense_tree[(1,3)] = sorcery
-    self.offense_tree[(1,4)] = butcher
+    offense_masteries[(1,1)] = summoners_wrath
+    offense_masteries[(1,2)] = fury
+    offense_masteries[(1,3)] = sorcery
+    offense_masteries[(1,4)] = butcher
     
     # Tier 2
     deadliness = Mastery("Offense", "Deadliness", "Grants {} attack damage per level ({} at level 18).", (0.17,0.33,0.5,0.67),
@@ -129,18 +166,18 @@ class MasteryPage:
     blast = Mastery("Offense", "Blast", "Grants {} ability power per level ({} at level 18).", (0.25,0.5,0.75,1), 0, 4, 4)
     destruction = Mastery("Offense", "Destruction", "Increases damage to turrets by 5%.", None, 0, 1, 4)
     
-    self.offense_tree[(2,2)] = deadliness
-    self.offense_tree[(2,3)] = blast
-    self.offense_tree[(2,4)] = destruction
+    offense_masteries[(2,2)] = deadliness
+    offense_masteries[(2,3)] = blast
+    offense_masteries[(2,4)] = destruction
     
     # Tier 3
     havoc = Mastery("Offense", "Havoc", "Increases damage dealt by {}%.", (0.67,1.33,2), 0, 3, 8)
     weapon_expertise = Mastery("Offense", "Weapon Expertise", "Grants 8% armor penetration.", None, 0, 1, 8, deadliness)
     arcane_knowledge = Mastery("Offense", "Arcane Knowledge", "Grants 8% magic penetration.", None, 0, 1, 8, blast)
     
-    self.offense_tree[(3,1)] = havoc
-    self.offense_tree[(3,2)] = weapon_expertise
-    self.offense_tree[(3,3)] = arcane_knowledge
+    offense_masteries[(3,1)] = havoc
+    offense_masteries[(3,2)] = weapon_expertise
+    offense_masteries[(3,3)] = arcane_knowledge
     
     # Tier 4
     lethality = Mastery("Offense", "Lethality", "Grants {}% critical strike damage (doubled on melee champions).",
@@ -150,10 +187,10 @@ class MasteryPage:
     spellsword = Mastery("Offense", "Spellsword", ("Your basic attacks deal bonus magic damage equal to 5% of your "
     "ability power."), None, 0, 1, 12)
     
-    self.offense_tree[(4,1)] = lethality
-    self.offense_tree[(4,2)] = brute_force
-    self.offense_tree[(4,3)] = mental_force
-    self.offense_tree[(4,4)] = spellsword
+    offense_masteries[(4,1)] = lethality
+    offense_masteries[(4,2)] = brute_force
+    offense_masteries[(4,3)] = mental_force
+    offense_masteries[(4,4)] = spellsword
     
     # Tier 5
     frenzy = Mastery("Offense", "Frenzy", "Grants a 10% attack speed buff for 2 seconds after landing a critical strike.",
@@ -161,18 +198,20 @@ class MasteryPage:
     sunder = Mastery("Offense", "Sunder", "Grants {} armor penetration.", (2,3.5,5), 0, 3, 16)
     archmage = Mastery("Offense", "Archmage", "Increases ability power by {}%.", (1.25,2.5,3.75,5), 0, 4, 16)
     
-    self.offense_tree[(5,1)] = frenzy
-    self.offense_tree[(5,2)] = sunder
-    self.offense_tree[(5,3)] = archmage
+    offense_masteries[(5,1)] = frenzy
+    offense_masteries[(5,2)] = sunder
+    offense_masteries[(5,3)] = archmage
     
     # Tier 6
     executioner = Mastery("Offense", "Executioner", ("Increases damage by 5% against targets below 50% health "
     "(excluding true damage)."), None, 0, 1, 20)
     
-    self.offense_tree[(6,2)] = executioner
+    offense_masteries[(6,2)] = executioner
+    
+    self.offense_tree = MasteryTree("Offense", offense_masteries)
     
     # Defense tree
-    self.defense_tree = {}
+    defense_masteries = {}
     
     # Tier 1
     summoners_resolve = Mastery("Defense", "Summoner's Resolve", ("Cleanse: Increases the duration of the crowd control "
@@ -184,10 +223,10 @@ class MasteryPage:
     0, 3, 0)
     tough_skin = Mastery("Defense", "Tough Skin", "Reduces damage from monsters by {}.", (1,2), 0, 2, 0)
     
-    self.defense_tree[(1,1)] = summoners_resolve
-    self.defense_tree[(1,2)] = perseverance
-    self.defense_tree[(1,3)] = durability
-    self.defense_tree[(1,4)] = tough_skin
+    defense_masteries[(1,1)] = summoners_resolve
+    defense_masteries[(1,2)] = perseverance
+    defense_masteries[(1,3)] = durability
+    defense_masteries[(1,4)] = tough_skin
     
     # Tier 2
     hardiness = Mastery("Defense", "Hardiness", "Grants {} armor.", (2,3.5,5), 0, 3, 4)
@@ -195,9 +234,9 @@ class MasteryPage:
     bladed_armor = Mastery("Defense", "Bladed Armor", "Deals 6 true damage to any minion or monster that attacks you.",
     None, 0, 1, 4, tough_skin)
     
-    self.defense_tree[(2,1)] = hardiness
-    self.defense_tree[(2,2)] = resistance
-    self.defense_tree[(2,4)] = bladed_armor
+    defense_masteries[(2,1)] = hardiness
+    defense_masteries[(2,2)] = resistance
+    defense_masteries[(2,4)] = bladed_armor
     
     # Tier 3
     unyielding = Mastery("Defense", "Unyielding", "Reduces damage from champions by {}.", (1,2), 0, 2, 8)
@@ -206,10 +245,10 @@ class MasteryPage:
     veterans_scars = Mastery("Defense", "Veteran's Scars", "Grants 30 health.", None, 0, 1, 8, durability)
     safeguard = Mastery("Defense", "Safeguard", "Reduces damage taken from turrets by 5%.", None, 0, 1, 8)
     
-    self.defense_tree[(3,1)] = unyielding
-    self.defense_tree[(3,2)] = relentless
-    self.defense_tree[(3,3)] = veterans_scars
-    self.defense_tree[(3,4)] = safeguard
+    defense_masteries[(3,1)] = unyielding
+    defense_masteries[(3,2)] = relentless
+    defense_masteries[(3,3)] = veterans_scars
+    defense_masteries[(3,4)] = safeguard
     
     # Tier 4
     block = Mastery("Defense", "Block", ("Block damage from champion basic attacks by 3. That means it applies before "
@@ -218,9 +257,9 @@ class MasteryPage:
     "multiplicatively with other sources of crowd control reduction)."), (5,10,15), 0, 3, 12)
     juggernaut = Mastery("Defense", "Juggernaut", "Increases your maximum health by {}%.", (1.5,2.75,4), 0, 3, 12)
     
-    self.defense_tree[(4,1)] = block
-    self.defense_tree[(4,2)] = tenacious
-    self.defense_tree[(4,3)] = juggernaut
+    defense_masteries[(4,1)] = block
+    defense_masteries[(4,2)] = tenacious
+    defense_masteries[(4,3)] = juggernaut
     
     # Tier 5
     defender = Mastery("Defense", "Defender", "Grants 1 bonus armor and magic resistance for every nearby enemy champion.",
@@ -231,18 +270,20 @@ class MasteryPage:
     reinforced_armor = Mastery("Defense", "Reinforced Armor", "Reduces damage taken from critical strikes by 10%.", None,
     0, 1, 16)
     
-    self.defense_tree[(5,1)] = defender
-    self.defense_tree[(5,2)] = legendary_armor
-    self.defense_tree[(5,3)] = good_hands
-    self.defense_tree[(5,4)] = reinforced_armor
+    defense_masteries[(5,1)] = defender
+    defense_masteries[(5,2)] = legendary_armor
+    defense_masteries[(5,3)] = good_hands
+    defense_masteries[(5,4)] = reinforced_armor
     
     # Tier 6
     honor_guard = Mastery("Defense", "Honor Guard", "Reduces damage taken from all sources by 3%.", None, 0, 1, 20)
     
-    self.defense_tree[(6,2)] = honor_guard
+    defense_masteries[(6,2)] = honor_guard
+    
+    self.defense_tree = MasteryTree("Defense", defense_masteries)
     
     # Utility tree
-    self.utility_tree = {}
+    utility_masteries = {}
     
     # Tier 1
     summoners_insight = Mastery("Utility", "Summoner's Insight", ("Clairvoyance: Grants persistent sight of enemies revealed "
@@ -254,10 +295,10 @@ class MasteryPage:
     improved_recall = Mastery("Utility", "Improved Recall", ("Reduces cast time of Recall by 1 second and Enhanced Recall "
     "by 0.5 seconds."), None, 0, 1, 0)
     
-    self.utility_tree[(1,1)] = summoners_insight
-    self.utility_tree[(1,2)] = wanderer
-    self.utility_tree[(1,3)] = meditation
-    self.utility_tree[(1,4)] = improved_recall
+    utility_masteries[(1,1)] = summoners_insight
+    utility_masteries[(1,2)] = wanderer
+    utility_masteries[(1,3)] = meditation
+    utility_masteries[(1,4)] = improved_recall
     
     # Tier 2
     scout = Mastery("Utility", "Scout", "Wards see for 25% further for the first 5 seconds.", None, 0, 1, 4)
@@ -266,10 +307,10 @@ class MasteryPage:
     (4,7,10), 0, 3, 4)
     artificer = Mastery("Utility", "Artificer", "Reduces the cooldown of item active effects by {}%.", (7.5,15), 0, 2, 4)
     
-    self.utility_tree[(2,1)] = scout
-    self.utility_tree[(2,2)] = mastermind
-    self.utility_tree[(2,3)] = expanded_minds
-    self.utility_tree[(2,4)] = artificer
+    utility_masteries[(2,1)] = scout
+    utility_masteries[(2,2)] = mastermind
+    utility_masteries[(2,3)] = expanded_minds
+    utility_masteries[(2,4)] = artificer
     
     # Tier 3
     greed = Mastery("Utility", "Greed", "Grants {} gold per 10 seconds.", (0.5,1,1.5,2), 0, 4, 8)
@@ -279,10 +320,10 @@ class MasteryPage:
     biscuiteer = Mastery("Utility", "Biscuiteer", ("You start the game with a Total Biscuit of Rejuvenation that restores "
     "80 health and 50 mana over 10 seconds."), None, 0, 1, 8)
     
-    self.utility_tree[(3,1)] = greed
-    self.utility_tree[(3,2)] = runic_affinity
-    self.utility_tree[(3,3)] = vampirism
-    self.utility_tree[(3,4)] = biscuiteer
+    utility_masteries[(3,1)] = greed
+    utility_masteries[(3,2)] = runic_affinity
+    utility_masteries[(3,3)] = vampirism
+    utility_masteries[(3,4)] = biscuiteer
     
     # Tier 4
     wealth = Mastery("Utility", "Wealth", "You start the game with {} bonus gold.", (25,50), 0, 2, 12, greed)
@@ -293,20 +334,22 @@ class MasteryPage:
     "places an invisible ward that lasts 60 seconds.\nOn other maps: You start the game with 25 bonus gold."), None, 0, 1, 12, 
     biscuiteer)
     
-    self.utility_tree[(4,1)] = wealth
-    self.utility_tree[(4,2)] = awareness
-    self.utility_tree[(4,3)] = strength_of_spirit
-    self.utility_tree[(4,4)] = explorer
+    utility_masteries[(4,1)] = wealth
+    utility_masteries[(4,2)] = awareness
+    utility_masteries[(4,3)] = strength_of_spirit
+    utility_masteries[(4,4)] = explorer
     
     # Tier 5
     pickpocket = Mastery("Utility", "Pickpocket", ("Your attacks against enemy champions grant gold (+3 ranged attacks; "
     "+5 melee attacks). 5 seconds cooldown."), None, 0, 1, 16)
     intelligence = Mastery("Utility", "Intelligence", "Grants {}% cooldown reduction.", (2,4,6), 0, 3, 16)
     
-    self.utility_tree[(5,1)] = pickpocket
-    self.utility_tree[(5,2)] = intelligence
+    utility_masteries[(5,1)] = pickpocket
+    utility_masteries[(5,2)] = intelligence
     
     # Tier 6
     nimble = Mastery("Utility", (6,2), "Nimble", "Grants 3% movement speed.", None, 0, 1, 20)
     
-    self.utility_tree[(6,2)] = nimble
+    utility_masteries[(6,2)] = nimble
+    
+    self.utility_tree = MasteryTree("Utility", utility_masteries)

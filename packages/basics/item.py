@@ -1,6 +1,6 @@
 # -*-coding:Latin-1 -*
-class Item:
-  """ Defines an item, with its basic characteristics, and the stats it gives.
+class Item(object):
+  """Defines an item, with its basic characteristics, and the stats it gives.
   
   Ref : http://leagueoflegends.wikia.com/wiki/Item
   """
@@ -9,7 +9,7 @@ class Item:
                armor_penetration, attack_damage, attack_speed, critical_strike_chance, critical_strike_damage, 
                life_steal, movement_speed, armor, health, health_regeneration, magic_resistance, 
                ability_power, cooldown_reduction, magic_penetration, mana, mana_regeneration, spell_vamp):
-    """ Initializing the item's stats.
+    """Initializing the item's stats.
     
     Named parmorameters :
     availability -- Map on which the item may be bought

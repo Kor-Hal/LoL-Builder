@@ -1,6 +1,6 @@
 # -*-coding:Latin-1 -*
-class Champion:
-  """ Defines a champion, with its most basic stats.
+class Champion(object):
+  """Defines a champion, with its most basic stats.
   
   Ref : http://leagueoflegends.wikia.com/wiki/Base_champion_statistics
   
@@ -13,7 +13,7 @@ class Champion:
               masteries,
               runes,
               itemsSet):
-    """ Initializing the basic stats.
+    """Initializing the basic stats.
     
     Named parameters :
     base_hp -- Base health

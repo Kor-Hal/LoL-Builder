@@ -1,12 +1,12 @@
 # -*-coding:Latin-1 -*
-class Rune:
-  """ Defines a Rune.
+class Rune(object):
+  """Defines a Rune.
   
   Ref : http://leagueoflegends.wikia.com/wiki/List_of_runes
   
   """
   
-  def __init__(self, tier, kind, name, rank, value, cost, icon, 
+  def __init__(self, tier, kind, name, rank, cost, icon, 
                ability_power=0, armor=0, armor_penetration=0, attack_damage=0, attack_speed=0, cooldown_reduction=0, 
                critical_strike_chance=0, critical_strike_damage=0, energy=0, energy_regeneration=0, experience=0, 
                gold=0, health=0, health_regeneration=0, life_steal=0, magic_penetration=0, magic_resistance=0, mana=0, 
@@ -99,8 +99,6 @@ class Rune:
     self._scaling_mana = scaling_mana
     self._scaling_mana_regeneration = scaling_mana_regeneration
     self._spell_vamp = spell_vamp
-  
-  # Read-only properties
   
   @property
   def name(self):
@@ -297,415 +295,291 @@ class Rune:
     """Rune's spell vamp bonus."""
     return self._spell_vamp
 
-# Ability Power
-l_mark_of_ap = Rune("Lesser", "Mark", "Ability Power", "Secondary", 30, None, ability_power=0.33)
-n_mark_of_ap = Rune("Normal", "Mark", "Ability Power", "Secondary", 165, None, ability_power=0.46)
-g_mark_of_ap = Rune("Greater", "Mark", "Ability Power", "Secondary", 410, None, ability_power=0.59)
-l_seal_of_ap = Rune("Lesser", "Seal", "Ability Power", "Secondary", 30, None, ability_power=0.33)
-n_seal_of_ap = Rune("Normal", "Seal", "Ability Power", "Secondary", 165, None, ability_power=0.46)
-g_seal_of_ap = Rune("Greater", "Seal", "Ability Power", "Secondary", 410, None, ability_power=0.59)
-l_glyph_of_ap = Rune("Lesser", "Glyph", "Ability Power", "Primary", 30, None, ability_power=0.66)
-n_glyph_of_ap = Rune("Normal", "Glyph", "Ability Power", "Primary", 165, None, ability_power=0.92)
-g_glyph_of_ap = Rune("Greater", "Glyph", "Ability Power", "Primary", 410, None, ability_power=1.19)
-l_quintessence_of_ap = Rune("Lesser", "Quintessence", "Ability Power", "Primary", 80, None, ability_power=2.75)
-n_quintessence_of_ap = Rune("Normal", "Quintessence", "Ability Power", "Primary", 410, None, ability_power=3.85)
-g_quintessence_of_ap = Rune("Greater", "Quintessence", "Ability Power", "Primary", 1025, None, ability_power=4.95)
-
-# Armor
-l_mark_of_armor = Rune("Lesser", "Mark", "Armor", "Secondary", 15, None, armor=0.51)
-n_mark_of_armor = Rune("Normal", "Mark", "Armor", "Secondary", 80, None, armor=0.71)
-g_mark_of_armor = Rune("Greater", "Mark", "Armor", "Secondary", 205, None, armor=0.91)
-l_seal_of_armor = Rune("Lesser", "Seal", "Armor", "Primary", 15, None, armor=0.78)
-n_seal_of_armor = Rune("Normal", "Seal", "Armor", "Primary", 80, None, armor=1.09)
-g_seal_of_armor = Rune("Greater", "Seal", "Armor", "Primary", 205, None, armor=1.41)
-l_glyph_of_armor = Rune("Lesser", "Glyph", "Armor", "Secondary", 15, None, armor=0.39)
-n_glyph_of_armor = Rune("Normal", "Glyph", "Armor", "Secondary", 80, None, armor=0.55)
-g_glyph_of_armor = Rune("Greater", "Glyph", "Armor", "Secondary", 205, None, armor=0.7)
-l_quintessence_of_armor = Rune("Lesser", "Quintessence", "Armor", "Primary", 80, None, armor=2.37)
-n_quintessence_of_armor = Rune("Normal", "Quintessence", "Armor", "Primary", 410, None, armor=3.32)
-g_quintessence_of_armor = Rune("Greater", "Quintessence", "Armor", "Primary", 1025, None, armor=4.26)
-
-# Armor Penetration
-l_mark_of_armor_penetration = Rune("Lesser", "Mark", "Armor Penetration", "Primary", 30, None, armor_penetration=0.72)
-n_mark_of_armor_penetration = Rune("Normal", "Mark", "Armor Penetration", "Primary", 165, None, armor_penetration=1)
-g_mark_of_armor_penetration = Rune("Greater", "Mark", "Armor Penetration", "Primary", 410, None, armor_penetration=1.28)
-l_quintessence_of_armor_penetration = Rune("Lesser", "Quintessence", "Armor Penetration", "Secondary", 80, None, armor_penetration=1.42)
-n_quintessence_of_armor_penetration = Rune("Normal", "Quintessence", "Armor Penetration", "Secondary", 410, None, armor_penetration=1.99)
-g_quintessence_of_armor_penetration = Rune("Greater", "Quintessence", "Armor Penetration", "Secondary", 1025, None, armor_penetration=2.56)
-
-# Attack Damage
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Attack Speed
-l_mark_of_attack_speed = Rune("Lesser", "Mark", "Attack Speed", "Primary", 30, None, attack_speed=0.0094)
-n_mark_of_attack_speed = Rune("Normal", "Mark", "Attack Speed", "Primary", 165, None, attack_speed=0.0132)
-g_mark_of_attack_speed = Rune("Greater", "Mark", "Attack Speed", "Primary", 410, None, attack_speed=0.017)
-l_seal_of_attack_speed = Rune("Lesser", "Seal", "Attack Speed", "Secondary", 30, None, attack_speed=0.0042)
-n_seal_of_attack_speed = Rune("Normal", "Seal", "Attack Speed", "Secondary", 165, None, attack_speed=0.0059)
-g_seal_of_attack_speed = Rune("Greater", "Seal", "Attack Speed", "Secondary", 410, None, attack_speed=0.0076)
-l_glyph_of_attack_speed = Rune("Lesser", "Glyph", "Attack Speed", "Secondary", 30, None, attack_speed=0.0035)
-n_glyph_of_attack_speed = Rune("Normal", "Glyph", "Attack Speed", "Secondary", 165, None, attack_speed=0.005)
-g_glyph_of_attack_speed = Rune("Greater", "Glyph", "Attack Speed", "Secondary", 410, None, attack_speed=0.0064)
-l_quintessence_of_attack_speed = Rune("Lesser", "Quintessence", "Attack Speed", "Secondary", 80, None, attack_speed=0.0189)
-n_quintessence_of_attack_speed = Rune("Normal", "Quintessence", "Attack Speed", "Secondary", 410, None, attack_speed=0.0264)
-g_quintessence_of_attack_speed = Rune("Greater", "Quintessence", "Attack Speed", "Secondary", 1025, None, attack_speed=0.034)
-
-# Cooldown Reduction
-l_mark_of_cooldown_reduction = Rune("Lesser", "Mark", "Cooldown Reduction", "Secondary", 30, None, cooldown_reduction=0.0011)
-n_mark_of_cooldown_reduction = Rune("Normal", "Mark", "Cooldown Reduction", "Secondary", 165, None, cooldown_reduction=0.0016)
-g_mark_of_cooldown_reduction = Rune("Greater", "Mark", "Cooldown Reduction", "Secondary", 410, None, cooldown_reduction=0.002)
-l_seal_of_cooldown_reduction = Rune("Lesser", "Seal", "Cooldown Reduction", "Secondary", 30, None, cooldown_reduction=0.002)
-n_seal_of_cooldown_reduction = Rune("Normal", "Seal", "Cooldown Reduction", "Secondary", 165, None, cooldown_reduction=0.0029)
-g_seal_of_cooldown_reduction = Rune("Greater", "Seal", "Cooldown Reduction", "Secondary", 410, None, cooldown_reduction=0.0036)
-l_glyph_of_cooldown_reduction = Rune("Lesser", "Glyph", "Cooldown Reduction", "Primary", 65, None, cooldown_reduction=0.0047)
-n_glyph_of_cooldown_reduction = Rune("Normal", "Glyph", "Cooldown Reduction", "Primary", 330, None, cooldown_reduction=0.0067)
-g_glyph_of_cooldown_reduction = Rune("Greater", "Glyph", "Cooldown Reduction", "Primary", 820, None, cooldown_reduction=0.0083)
-l_quintessence_of_cooldown_reduction = Rune("Lesser", "Quintessence", "Cooldown Reduction", "Secondary", 165, None, cooldown_reduction=0.0093)
-n_quintessence_of_cooldown_reduction = Rune("Normal", "Quintessence", "Cooldown Reduction", "Secondary", 820, None, cooldown_reduction=0.0133)
-g_quintessence_of_cooldown_reduction = Rune("Greater", "Quintessence", "Cooldown Reduction", "Secondary", 2050, None, cooldown_reduction=0.0167)
-
-# Critical Chance
-l_mark_of_critical_chance = Rune("Lesser", "Mark", "Critical Chance", "Primary", 30, None, critical_chance=0.0052)
-n_mark_of_critical_chance = Rune("Normal", "Mark", "Critical Chance", "Primary", 165, None, critical_chance=0.0072)
-g_mark_of_critical_chance = Rune("Greater", "Mark", "Critical Chance", "Primary", 410, None, critical_chance=0.0093)
-l_seal_of_critical_chance = Rune("Lesser", "Seal", "Critical Chance", "Secondary", 30, None, critical_chance=0.0023)
-n_seal_of_critical_chance = Rune("Normal", "Seal", "Critical Chance", "Secondary", 165, None, critical_chance=0.0032)
-g_seal_of_critical_chance = Rune("Greater", "Seal", "Critical Chance", "Secondary", 410, None, critical_chance=0.0042)
-l_glyph_of_critical_chance = Rune("Lesser", "Glyph", "Critical Chance", "Secondary", 30, None, critical_chance=0.0015)
-n_glyph_of_critical_chance = Rune("Normal", "Glyph", "Critical Chance", "Secondary", 165, None, critical_chance=0.0022)
-g_glyph_of_critical_chance = Rune("Greater", "Glyph", "Critical Chance", "Secondary", 410, None, critical_chance=0.0028)
-l_quintessence_of_critical_chance = Rune("Lesser", "Quintessence", "Critical Chance", "Secondary", 80, None, critical_chance=0.0103)
-n_quintessence_of_critical_chance = Rune("Normal", "Quintessence", "Critical Chance", "Secondary", 410, None, critical_chance=0.0144)
-g_quintessence_of_critical_chance = Rune("Greater", "Quintessence", "Critical Chance", "Secondary", 1025, None, critical_chance=0.0186)
-
-# Critical Damage
-l_mark_of_critical_damage = Rune("Lesser", "Mark", "Critical Damage", "Primary", 65, None, critical_damage=0.0124)
-n_mark_of_critical_damage = Rune("Normal", "Mark", "Critical Damage", "Primary", 330, None, critical_damage=0.0174)
-g_mark_of_critical_damage = Rune("Greater", "Mark", "Critical Damage", "Primary", 820, None, critical_damage=0.0223)
-l_seal_of_critical_damage = Rune("Lesser", "Seal", "Critical Damage", "Secondary", 65, None, critical_damage=0.0043)
-n_seal_of_critical_damage = Rune("Normal", "Seal", "Critical Damage", "Secondary", 330, None, critical_damage=0.0061)
-g_seal_of_critical_damage = Rune("Greater", "Seal", "Critical Damage", "Secondary", 820, None, critical_damage=0.0078)
-l_glyph_of_critical_damage = Rune("Lesser", "Glyph", "Critical Damage", "Secondary", 65, None, critical_damage=0.0031)
-n_glyph_of_critical_damage = Rune("Normal", "Glyph", "Critical Damage", "Secondary", 330, None, critical_damage=0.0043)
-g_glyph_of_critical_damage = Rune("Greater", "Glyph", "Critical Damage", "Secondary", 820, None, critical_damage=0.0056)
-l_quintessence_of_critical_damage = Rune("Lesser", "Quintessence", "Critical Damage", "Secondary", 80, None, critical_damage=0.0248)
-n_quintessence_of_critical_damage = Rune("Normal", "Quintessence", "Critical Damage", "Secondary", 410, None, critical_damage=0.0347)
-g_quintessence_of_critical_damage = Rune("Greater", "Quintessence", "Critical Damage", "Secondary", 1025, None, critical_damage=0.0446)
-
-# Energy
-g_glyph_of_energy = Rune("Greater", "Glyph", "Energy", "Primary", 820, None, energy=2.2)
-g_quintessence_of_energy = Rune("Greater", "Quintessence", "Energy", "Primary", 1025, None, energy=5.4)
-
-# Energy Regeneration
-g_seal_of_energy_regeneration = Rune("Greater", "Seal", "Energy Regeneration", "Primary", 820, None, energy_regeneration=0.63)
-g_quintessence_of_energy_regeneration = Rune("Greater", "Quintessence", "Energy Regeneration", "Primary", 2050, None, energy_regeneration=1.575)
-
-# Experience
-g_quintessence_of_experience = Rune("Greater", "Quintessence", "Experience", "Primary", 2050, None, experience=0.02)
-
-# Gold (Gold / 10 sec)
-g_seal_of_gold = Rune("Greater", "Seal", "Gold", "Primary", 410, None, gold=0.25)
-g_quintessence_of_gold = Rune("Greater", "Quintessence", "Gold", "Primary", 515, None, gold=1)
-
-# Health
-l_mark_of_health = Rune("Lesser", "Mark", "Health", "Secondary", 30, None, health=1.93)
-n_mark_of_health = Rune("Normal", "Mark", "Health", "Secondary", 165, None, health=2.7)
-g_mark_of_health = Rune("Greater", "Mark", "Health", "Secondary", 410, None, health=3.47)
-l_seal_of_health = Rune("Lesser", "Seal", "Health", "Primary", 65, None, health=2.97)
-n_seal_of_health = Rune("Normal", "Seal", "Health", "Primary", 330, None, health=4.16)
-g_seal_of_health = Rune("Greater", "Seal", "Health", "Primary", 820, None, health=5.35)
-l_glyph_of_health = Rune("Lesser", "Glyph", "Health", "Secondary", 30, None, health=1.49)
-n_glyph_of_health = Rune("Normal", "Glyph", "Health", "Secondary", 165, None, health=2.08)
-g_glyph_of_health = Rune("Greater", "Glyph", "Health", "Secondary", 410, None, health=2.67)
-l_quintessence_of_health = Rune("Lesser", "Quintessence", "Health", "Primary", 165, None, health=14.5)
-n_quintessence_of_health = Rune("Normal", "Quintessence", "Health", "Primary", 820, None, health=20)
-g_quintessence_of_health = Rune("Greater", "Quintessence", "Health", "Primary", 2050, None, health=26)
-
-# Health Regeneration (Health Regen / 5 sec)
-l_seal_of_health_regeneration = Rune("Lesser", "Seal", "Health Regeneration", "Primary", 65, None, health_regeneration=0.24)
-n_seal_of_health_regeneration = Rune("Normal", "Seal", "Health Regeneration", "Primary", 330, None, health_regeneration=0.34)
-g_seal_of_health_regeneration = Rune("Greater", "Seal", "Health Regeneration", "Primary", 820, None, health_regeneration=0.43)
-l_glyph_of_health_regeneration = Rune("Lesser", "Glyph", "Health Regeneration", "Secondary", 65, None, health_regeneration=0.15)
-n_glyph_of_health_regeneration = Rune("Normal", "Glyph", "Health Regeneration", "Secondary", 330, None, health_regeneration=0.21)
-g_glyph_of_health_regeneration = Rune("Greater", "Glyph", "Health Regeneration", "Secondary", 820, None, health_regeneration=0.27)
-l_quintessence_of_health_regeneration = Rune("Lesser", "Quintessence", "Health Regeneration", "Primary", 165, None, health_regeneration=1.5)
-n_quintessence_of_health_regeneration = Rune("Normal", "Quintessence", "Health Regeneration", "Primary", 820, None, health_regeneration=2.1)
-g_quintessence_of_health_regeneration = Rune("Greater", "Quintessence", "Health Regeneration", "Primary", 2050, None, health_regeneration=2.7)
-
-# Hybrid Penetration (Armor Penetration / Magic Penetration)
-l_mark_of_hybrid_penetration = Rune("Lesser", "Mark", "Hybrid Penetration", "Primary", 65, None, armor_penetration=0.5, magic_penetration=0.34)
-n_mark_of_hybrid_penetration = Rune("Normal", "Mark", "Hybrid Penetration", "Primary", 330, None, armor_penetration=0.7, magic_penetration=0.48)
-g_mark_of_hybrid_penetration = Rune("Greater", "Mark", "Hybrid Penetration", "Primary", 820, None, armor_penetration=0.9, magic_penetration=0.62)
-l_quintessence_of_hybrid_penetration = Rune("Lesser", "Quintessence", "Hybrid Penetration", "Secondary", 165, None, armor_penetration=0.99, magic_penetration=0.78)
-n_quintessence_of_hybrid_penetration = Rune("Normal", "Quintessence", "Hybrid Penetration", "Secondary", 820, None, armor_penetration=1.39, magic_penetration=1.09)
-g_quintessence_of_hybrid_penetration = Rune("Greater", "Quintessence", "Hybrid Penetration", "Secondary", 2050, None, armor_penetration=1.79, magic_penetration=1.4)
-
-# Life Steal
-l_quintessence_of_life_steal = Rune("Lesser", "Quintessence", "Life Steal", "Primary", 165, None, life_steal=0.0112)
-n_quintessence_of_life_steal = Rune("Normal", "Quintessence", "Life Steal", "Primary", 820, None, life_steal=0.0156)
-g_quintessence_of_life_steal = Rune("Greater", "Quintessence", "Life Steal", "Primary", 2050, None, life_steal=0.02)
-
-# Magic Penetration
-l_mark_of_magic_penetration = Rune("Lesser", "Mark", "Magic Penetration", "Primary", 30, None, magic_penetration=0.49)
-n_mark_of_magic_penetration = Rune("Normal", "Mark", "Magic Penetration", "Primary", 165, None, magic_penetration=0.68)
-g_mark_of_magic_penetration = Rune("Greater", "Mark", "Magic Penetration", "Primary", 410, None, magic_penetration=0.87)
-l_glyph_of_magic_penetration = Rune("Lesser", "Glyph", "Magic Penetration", "Secondary", 30, None, magic_penetration=0.35)
-n_glyph_of_magic_penetration = Rune("Normal", "Glyph", "Magic Penetration", "Secondary", 165, None, magic_penetration=0.49)
-g_glyph_of_magic_penetration = Rune("Greater", "Glyph", "Magic Penetration", "Secondary", 410, None, magic_penetration=0.63)
-l_quintessence_of_magic_penetration = Rune("Lesser", "Quintessence", "Magic Penetration", "Secondary", 80, None, magic_penetration=1.11)
-n_quintessence_of_magic_penetration = Rune("Normal", "Quintessence", "Magic Penetration", "Secondary", 410, None, magic_penetration=1.56)
-g_quintessence_of_magic_penetration = Rune("Greater", "Quintessence", "Magic Penetration", "Secondary", 1025, None, magic_penetration=2.01)
-
-# Magic Resist
-l_mark_of_magic_resist = Rune("Lesser", "Mark", "Magic Resist", "Secondary", 15, None, magic_resist=0.43)
-n_mark_of_magic_resist = Rune("Normal", "Mark", "Magic Resist", "Secondary", 80, None, magic_resist=0.6)
-g_mark_of_magic_resist = Rune("Greater", "Mark", "Magic Resist", "Secondary", 205, None, magic_resist=0.77)
-l_seal_of_magic_resist = Rune("Lesser", "Seal", "Magic Resist", "Secondary", 15, None, magic_resist=0.41)
-n_seal_of_magic_resist = Rune("Normal", "Seal", "Magic Resist", "Secondary", 80, None, magic_resist=0.58)
-g_seal_of_magic_resist = Rune("Greater", "Seal", "Magic Resist", "Secondary", 205, None, magic_resist=0.74)
-l_glyph_of_magic_resist = Rune("Lesser", "Glyph", "Magic Resist", "Primary", 15, None, magic_resist=0.74)
-n_glyph_of_magic_resist = Rune("Normal", "Glyph", "Magic Resist", "Primary", 80, None, magic_resist=1.04)
-g_glyph_of_magic_resist = Rune("Greater", "Glyph", "Magic Resist", "Primary", 205, None, magic_resist=1.34)
-l_quintessence_of_magic_resist = Rune("Lesser", "Quintessence", "Magic Resist", "Secondary", 80, None, magic_resist=2.22)
-n_quintessence_of_magic_resist = Rune("Normal", "Quintessence", "Magic Resist", "Secondary", 410, None, magic_resist=3.11)
-g_quintessence_of_magic_resist = Rune("Greater", "Quintessence", "Magic Resist", "Secondary", 1025, None, magic_resist=4)
-
-# Mana
-l_mark_of_mana = Rune("Lesser", "Mark", "Mana", "Secondary", 30, None, mana=3.28)
-n_mark_of_mana = Rune("Normal", "Mark", "Mana", "Secondary", 165, None, mana=4.59)
-g_mark_of_mana = Rune("Greater", "Mark", "Mana", "Secondary", 410, None, mana=5.91)
-l_seal_of_mana = Rune("Lesser", "Seal", "Mana", "Secondary", 30, None, mana=3.83)
-n_seal_of_mana = Rune("Normal", "Seal", "Mana", "Secondary", 165, None, mana=5.36)
-g_seal_of_mana = Rune("Greater", "Seal", "Mana", "Secondary", 410, None, mana=6.89)
-l_glyph_of_mana = Rune("Lesser", "Glyph", "Mana", "Primary", 30, None, mana=6.25)
-n_glyph_of_mana = Rune("Normal", "Glyph", "Mana", "Primary", 165, None, mana=8.75)
-g_glyph_of_mana = Rune("Greater", "Glyph", "Mana", "Primary", 410, None, mana=11.25)
-l_quintessence_of_mana = Rune("Lesser", "Quintessence", "Mana", "Primary", 80, None, mana=20.83)
-n_quintessence_of_mana = Rune("Normal", "Quintessence", "Mana", "Primary", 410, None, mana=29.17)
-g_quintessence_of_mana = Rune("Greater", "Quintessence", "Mana", "Primary", 1025, None, mana=37.5)
-
-# Mana Regeneration (Mana regen / 5 sec)
-l_mark_of_mana_regeneration = Rune("Lesser", "Mark", "Mana Regeneration", "Secondary", 15, None, mana_regeneration=0.15)
-n_mark_of_mana_regeneration = Rune("Normal", "Mark", "Mana Regeneration", "Secondary", 80, None, mana_regeneration=0.2)
-g_mark_of_mana_regeneration = Rune("Greater", "Mark", "Mana Regeneration", "Secondary", 205, None, mana_regeneration=0.26)
-l_seal_of_mana_regeneration = Rune("Lesser", "Seal", "Mana Regeneration", "Primary", 15, None, mana_regeneration=0.23)
-n_seal_of_mana_regeneration = Rune("Normal", "Seal", "Mana Regeneration", "Primary", 80, None, mana_regeneration=0.32)
-g_seal_of_mana_regeneration = Rune("Greater", "Seal", "Mana Regeneration", "Primary", 205, None, mana_regeneration=0.41)
-l_glyph_of_mana_regeneration = Rune("Lesser", "Glyph", "Mana Regeneration", "Secondary", 30, None, mana_regeneration=0.17)
-n_glyph_of_mana_regeneration = Rune("Normal", "Glyph", "Mana Regeneration", "Secondary", 165, None, mana_regeneration=0.24)
-g_glyph_of_mana_regeneration = Rune("Greater", "Glyph", "Mana Regeneration", "Secondary", 410, None, mana_regeneration=0.31)
-l_quintessence_of_mana_regeneration = Rune("Lesser", "Quintessence", "Mana Regeneration", "Primary", 80, None, mana_regeneration=0.69)
-n_quintessence_of_mana_regeneration = Rune("Normal", "Quintessence", "Mana Regeneration", "Primary", 410, None, mana_regeneration=0.97)
-g_quintessence_of_mana_regeneration = Rune("Greater", "Quintessence", "Mana Regeneration", "Primary", 1025, None, mana_regeneration=1.25)
-
-# Movement Speed
-l_quintessence_of_movement_speed = Rune("Lesser", "Quintessence", "Movement Speed", "Primary", 165, None, movement_speed=0.0083)
-n_quintessence_of_movement_speed = Rune("Normal", "Quintessence", "Movement Speed", "Primary", 820, None, movement_speed=0.0117)
-g_quintessence_of_movement_speed = Rune("Greater", "Quintessence", "Movement Speed", "Primary", 2050, None, movement_speed=0.015)
-
-# Percent Health
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Revival (Reduction of time dead)
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Scaling Ability Power (Ability Power per level)
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Scaling Armor (Armor per level)
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Scaling Attack Damage (Attack Damage per level)
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Scaling Cooldown Reduction (Cooldown Reduction per level)
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Scaling Energy (Energy per level)
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Scaling Energy Regeneration (Energy Regen / 5 sec per level)
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Scaling Health (Health per level)
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Scaling Health Regeneration (Health Regen / 5 sec per level)
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Scaling Magic Resist (Magic Resist per level)
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Scaling Mana (Mana per level)
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Scaling Mana Regeneration (Mana regen / 5 sec per level)
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
-
-# Spell Vamp
-l_mark_of_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
-n_mark_of_attack_damage = Rune("Normal", "Mark", "Attack Damage", "Primary", 80, None, attack_damage=0.74)
-g_mark_of_attack_damage = Rune("Greater", "Mark", "Attack Damage", "Primary", 205, None, attack_damage=0.95)
-l_seal_of_attack_damage = Rune("Lesser", "Seal", "Attack Damage", "Secondary", 15, None, attack_damage=0.24)
-n_seal_of_attack_damage = Rune("Normal", "Seal", "Attack Damage", "Secondary", 80, None, attack_damage=0.33)
-g_seal_of_attack_damage = Rune("Greater", "Seal", "Attack Damage", "Secondary", 205, None, attack_damage=0.43)
-l_glyph_of_attack_damage = Rune("Lesser", "Glyph", "Attack Damage", "Secondary", 15, None, attack_damage=0.16)
-n_glyph_of_attack_damage = Rune("Normal", "Glyph", "Attack Damage", "Secondary", 80, None, attack_damage=0.22)
-g_glyph_of_attack_damage = Rune("Greater", "Glyph", "Attack Damage", "Secondary", 205, None, attack_damage=0.28)
-l_quintessence_of_attack_damage = Rune("Lesser", "Quintessence", "Attack Damage", "Secondary", 80, None, attack_damage=1.25)
-n_quintessence_of_attack_damage = Rune("Normal", "Quintessence", "Attack Damage", "Secondary", 410, None, attack_damage=1.75)
-g_quintessence_of_attack_damage = Rune("Greater", "Quintessence", "Attack Damage", "Secondary", 1025, None, attack_damage=2.25)
+class RunePage(object):
+  """Defines a Rune page.
+  
+  Ref : http://leagueoflegends.wikia.com/wiki/Runes
+  
+  """
+  
+  def __init__(self, name):
+    """Create a new empty Rune page.
+    
+    Named parameters :
+    name -- Rune page's name
+    
+    """
+    
+    self._name = name
+    self._marks = [None,None,None,None,None,None,None,None,None]
+    self._seals = [None,None,None,None,None,None,None,None,None]
+    self._glyphs = [None,None,None,None,None,None,None,None,None]
+    self._quintessences = [None,None,None]
+    self._statistics = dict(ability_power=0, armor=0, armor_penetration=0, attack_damage=0, attack_speed=0, 
+    cooldown_reduction=0, critical_strike_chance=0, critical_strike_damage=0, energy=0, energy_regeneration=0, 
+    experience=0, gold=0, health=0, health_regeneration=0, life_steal=0, magic_penetration=0, magic_resistance=0, 
+    mana=0, mana_regeneration=0, movement_speed=0, percent_health=0, revival=0, scaling_ability_power=0, scaling_armor=0, 
+    scaling_attack_damage=0, scaling_cooldown_reduction=0, scaling_energy=0, scaling_energy_regeneration=0, scaling_health=0, 
+    scaling_health_regeneration=0, scaling_magic_resistance=0, scaling_mana=0, scaling_mana_regeneration=0, spell_vamp=0)
+  
+  @property
+  def name(self):
+    """Rune page's name."""
+    return self._name
+  
+  @property
+  def marks(self):
+    """Marks in the Rune page."""
+    return self._marks
+  
+  @marks.setter
+  def marks(self, value):
+    self._marks = value
+  
+  @property
+  def seals(self):
+    """Seals in the Rune page."""
+    return self._seals
+  
+  @seals.setter
+  def seals(self, value):
+    self._seals = value
+  
+  @property
+  def glyphs(self):
+    """Glyphs in the Rune page."""
+    return self._glyphs
+  
+  @glyphs.setter
+  def glyphs(self, value):
+    self._glyphs = value
+  
+  @property
+  def quintessences(self):
+    """Quintessences in the Rune page."""
+    return self._quintessences
+  
+  @quintessences.setter
+  def quintessences(self, value):
+    self._quintessences = value
+  
+  @property
+  def statistics(self):
+    """Dict of Rune page's bonus statistics."""
+    return self._statistics
+  
+  @property
+  def ability_power(self):
+    """Bonus Ability Power of the Rune page."""
+    return self.statistics['ability_power']
+  
+  @property
+  def armor(self):
+    """Bonus Armor of the Rune page."""
+    return self.statistics['armor']
+  
+  @property
+  def armor_penetration(self):
+    """Bonus Armor Penetration of the Rune page."""
+    return self.statistics['armor_penetration']
+  
+  @property
+  def attack_damage(self):
+    """Bonus Attack Damage of the Rune page."""
+    return self.statistics['attack_damage']
+  
+  @property
+  def attack_speed(self):
+    """Bonus Attack Speed of the Rune page."""
+    return self.statistics['attack_speed']
+  
+  @property
+  def cooldown_reduction(self):
+    """Bonus Cooldown Reduction of the Rune page."""
+    return self.statistics['cooldown_reduction']
+  
+  @property
+  def critical_strike_chance(self):
+    """Bonus Critical Strike Chance of the Rune page."""
+    return self.statistics['critical_strike_chance']
+  
+  @property
+  def critical_strike_damage(self):
+    """Bonus Critical Strike Damage of the Rune page."""
+    return self.statistics['critical_strike_damage']
+  
+  @property
+  def energy(self):
+    """Bonus Energy of the Rune page."""
+    return self.statistics['energy']
+  
+  @property
+  def energy_regeneration(self):
+    """Bonus Energy Regeneration of the Rune page."""
+    return self.statistics['energy_regeneration']
+  
+  @property
+  def experience(self):
+    """Bonus Experience of the Rune page."""
+    return self.statistics['experience']
+  
+  @property
+  def gold(self):
+    """Bonus Gold of the Rune page."""
+    return self.statistics['gold']
+  
+  @property
+  def health(self):
+    """Bonus Health of the Rune page."""
+    return self.statistics['health']
+  
+  @property
+  def health_regeneration(self):
+    """Bonus Health Regeneration of the Rune page."""
+    return self.statistics['health_regeneration']
+  
+  @property
+  def life_steal(self):
+    """Bonus Life Steal of the Rune page."""
+    return self.statistics['life_steal']
+  
+  @property
+  def magic_penetration(self):
+    """Bonus Magic Penetration of the Rune page."""
+    return self.statistics['magic_penetration']
+  
+  @property
+  def magic_resistance(self):
+    """Bonus Magic Resistance of the Rune page."""
+    return self.statistics['magic_resistance']
+  
+  @property
+  def mana(self):
+    """Bonus Mana of the Rune page."""
+    return self.statistics['mana']
+  
+  @property
+  def mana_regeneration(self):
+    """Bonus Mana Regeneration of the Rune page."""
+    return self.statistics['mana_regeneration']
+  
+  @property
+  def movement_speed(self):
+    """Bonus Movement Speed of the Rune page."""
+    return self.statistics['movement_speed']
+  
+  @property
+  def percent_health(self):
+    """Bonus Percent Health of the Rune page."""
+    return self.statistics['percent_health']
+  
+  @property
+  def revival(self):
+    """Bonus Revival of the Rune page."""
+    return self.statistics['revival']
+  
+  @property
+  def scaling_ability_power(self):
+    """Bonus Scaling Ability Power of the Rune page."""
+    return self.statistics['scaling_ability_power']
+      
+  @property
+  def scaling_armor(self):
+    """Bonus Scaling Armor of the Rune page."""
+    return self.statistics['scaling_armor']
+  
+  @property
+  def scaling_attack_damage(self):
+    """Bonus Scaling Attack Damage of the Rune page."""
+    return self.statistics['scaling_attack_damage']
+  
+  @property
+  def scaling_cooldown_reduction(self):
+    """Bonus Scaling Cooldown Reduction of the Rune page."""
+    return self.statistics['scaling_cooldown_reduction']
+  
+  @property
+  def scaling_energy(self):
+    """Bonus Scaling Energy of the Rune page."""
+    return self.statistics['scaling_energy']
+  
+  @property
+  def scaling_energy_regeneration(self):
+    """Bonus Scaling Energy Regeneration of the Rune page."""
+    return self.statistics['scaling_energy_regeneration']
+  
+  @property
+  def scaling_health(self):
+    """Bonus Scaling Health of the Rune page."""
+    return self.statistics['scaling_health']
+  
+  @property
+  def scaling_health_regeneration(self):
+    """Bonus Scaling Health Regeneration of the Rune page."""
+    return self.statistics['scaling_health_regeneration']
+  
+  @property
+  def scaling_magic_resistance(self):
+    """Bonus Scaling Magic Resistance of the Rune page."""
+    return self.statistics['scaling_magic_resistance']
+  
+  @property
+  def scaling_mana(self):
+    """Bonus Scaling Mana of the Rune page."""
+    return self.statistics['scaling_mana']
+  
+  @property
+  def scaling_mana_regeneration(self):
+    """Bonus Scaling Mana Regeneration of the Rune page."""
+    return self.statistics['scaling_mana_regeneration']
+  
+  @property
+  def spell_vamp(self):
+    """Bonus Spell Vamp of the Rune page."""
+    return self.statistics['spell_vamp']
+  
+  def update_statistics(self):
+    for statistic in self.statistics.keys():
+      self.statistics[statistic] = 0
+      
+      for mark in self.marks:
+        if mark is not None:
+          self.statistics[statistic] += getattr(mark, statistic)
+      
+      for seal in self.seals:
+        if seal is not None:
+          self.statistics[statistic] += getattr(seal, statistic)
+      
+      for glyph in self.glyphs:
+        if glyph is not None:
+          self.statistics[statistic] += getattr(glyph, statistic)
+      
+      for quintessence in self.quintessences:
+        if quintessence is not None:
+          self.statistics[statistic] += getattr(quintessence, statistic)
+  
+  def add_rune(self, rune, position):
+    """Add a Rune to the right part of the Rune page."""
+    if rune.kind == "Mark":
+      self.marks[position] = rune
+    elif rune.kind == "Seal":
+      self.seals[position] = rune
+    elif rune.kind == "Glyph":
+      self.glyphs[position] = rune
+    elif rune.kind == "Quintessence":
+      self.quintessences[position] = rune
+    
+    self.update_statistics()
+  
+  def del_rune(self, kind, position):
+    """Delete a Rune from the Rune page."""
+    if kind == "Mark":
+      self.marks[position] = None
+    elif kind == "Seal":
+      self.seals[position] = None
+    elif kind == "Glyph":
+      self.glyphs[position] = None
+    elif kind == "Quintessence":
+      self.quintessences[position] = None
+    
+    self.update_statistics()

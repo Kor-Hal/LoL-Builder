@@ -1,5 +1,5 @@
 # -*-coding:Latin-1 -*
-class Ability:
+class Ability(object):
   """ Defines a skill with its name and description.
   
   Ref : http://leagueoflegends.wikia.com/wiki/Champion_ability
@@ -7,7 +7,7 @@ class Ability:
   """
   
   def __init__(self, name, description, archetype, kind, cooldown=None, cost=None, reach=None):
-    """ Initializing the ability's attributes.
+    """Initializing the ability's attributes.
     
     Named parameters :
     name -- Name of the ability (list to handle toggles)

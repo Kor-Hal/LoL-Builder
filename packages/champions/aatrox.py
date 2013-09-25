@@ -10,24 +10,24 @@ class Aatrox(champion.Champion):
   
   def __init__(self):
     # Basic stats
-    baseHP = 395
-    baseHPPlus = 85
-    baseHP5 = 5.75
-    baseHP5Plus = 0.5
-    baseMP = 0
-    baseMPPlus = 0
-    baseMP5 = 0
-    baseMP5Plus = 0
-    baseAD = 55
-    baseADPlus = 3.2
-    baseAS = 0.651
-    baseASPlus = 0.03
-    baseAR = 14
-    baseARPlus = 3.8
-    baseMR = 30
-    baseMRPlus = 1.25
-    baseMS = 345
-    baseRange = 150
+    base_hp = 395
+    base_hp_plus = 85
+    base_hp5 = 5.75
+    base_hp5_plus = 0.5
+    base_mp = 0
+    base_mp_plus = 0
+    base_mp5 = 0
+    base_mp5_plus = 0
+    base_ad = 55
+    base_ad_plus = 3.2
+    base_as = 0.651
+    base_as_plus = 0.03
+    base_ar = 14
+    base_ar_plus = 3.8
+    base_mr = 30
+    base_mr_plus = 1.25
+    base_ms = 345
+    base_range = 150
         
     # Abilities
     # Passive - Blood Well
@@ -61,9 +61,9 @@ class Aatrox(champion.Champion):
     attacks are still considered melee."""],
     "Ultimate", "Active", [(100, 85, 70)], [("No cost",)])
     
-    champion.Champion.__init__(self, baseHP, baseHPPlus, baseHP5, baseHP5Plus, baseMP, baseMPPlus, 
-                              baseMP5, baseMP5Plus, baseAD, baseADPlus, baseAS, baseASPlus, baseAR, baseARPlus, 
-                              baseMR, baseMRPlus, baseMS, baseRange,
+    champion.Champion.__init__(self, base_hp, base_hp_plus, base_hp5, base_hp5_plus, base_mp, base_mp_plus, 
+                              base_mp5, base_mp5_plus, base_ad, base_ad_plus, base_as, base_as_plus, base_ar, base_ar_plus, 
+                              base_mr, base_mr_plus, base_ms, base_range,
                               [passive, ability1, ability2, ability3, ability4],
                               {},
                               {},
@@ -71,22 +71,22 @@ class Aatrox(champion.Champion):
   
   # Defining current stats functions.
   def curr_hp(self, level):
-    return round(self.baseHP + self.baseHPPlus * level, 2)
+    return round(self.base_hp + self.base_hp_plus * level, 2)
   def curr_hp5(self, level):
-    return round(self.baseHP5 + self.baseHP5Plus * level, 2)
+    return round(self.base_hp5 + self.base_hp5_plus * level, 2)
   def curr_mp(self, level):
-    return round(self.baseMP + self.baseMPPlus * level, 2)
+    return round(self.base_mp + self.base_mp_plus * level, 2)
   def curr_mp5(self, level):
-    return round(self.baseMP5 + self.baseMP5Plus * level, 2)
+    return round(self.base_mp5 + self.base_mp5_plus * level, 2)
   def curr_ad(self, level):
-    return round(self.baseAD + self.baseADPlus * level, 2)
+    return round(self.base_ad + self.base_ad_plus * level, 2)
   def curr_as(self, level):
-    return round(self.baseAS * (1 + self.baseASPlus * (level - 1)), 3)
+    return round(self.base_as * (1 + self.base_as_plus * (level - 1)), 3)
   def curr_ar(self, level):
-    return round(self.baseAR + self.baseARPlus * level, 2)
+    return round(self.base_ar + self.base_ar_plus * level, 2)
   def curr_mr(self, level):
-    return round(self.baseMR + self.baseMRPlus * level, 2)
+    return round(self.base_mr + self.base_mr_plus * level, 2)
   def curr_ms(self, level):
-    return self.baseMS
+    return self.base_ms
   def curr_range(self, level):
-    return self.baseRange
+    return self.base_range
