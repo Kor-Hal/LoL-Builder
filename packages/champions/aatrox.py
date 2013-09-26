@@ -64,29 +64,32 @@ class Aatrox(champion.Champion):
     champion.Champion.__init__(self, base_hp, base_hp_plus, base_hp5, base_hp5_plus, base_mp, base_mp_plus, 
                               base_mp5, base_mp5_plus, base_ad, base_ad_plus, base_as, base_as_plus, base_ar, base_ar_plus, 
                               base_mr, base_mr_plus, base_ms, base_range,
-                              [passive, ability1, ability2, ability3, ability4],
-                              {},
-                              {},
-                              {'Slot 1': None, 'Slot 2': None, 'Slot 3': None, 'Slot 4': None, 'Slot 5': None, 'Slot 6': None})
+                              [passive, ability1, ability2, ability3, ability4])
   
   # Defining current stats functions.
-  def curr_hp(self, level):
-    return round(self.base_hp + self.base_hp_plus * level, 2)
-  def curr_hp5(self, level):
+  def current_hp(self, level):
+    total = 0
+    total += self.base_hp + self.base_hp_plus * level # base HP
+    total += self.runes.health + self.runes.scaling_health * level # flat Health from runes
+    total += self.masteries.health + self.masteries.scaling_health * level # flat Health from masteries
+    # TODO Flat Health from items
+    total *= 1 + self.runes.percent_health + self.masteries.percent_health
+    return round(total, 2)
+  def current_hp5(self, level):
     return round(self.base_hp5 + self.base_hp5_plus * level, 2)
-  def curr_mp(self, level):
+  def current_mp(self, level):
     return round(self.base_mp + self.base_mp_plus * level, 2)
-  def curr_mp5(self, level):
+  def current_mp5(self, level):
     return round(self.base_mp5 + self.base_mp5_plus * level, 2)
-  def curr_ad(self, level):
+  def current_ad(self, level):
     return round(self.base_ad + self.base_ad_plus * level, 2)
-  def curr_as(self, level):
+  def current_as(self, level):
     return round(self.base_as * (1 + self.base_as_plus * (level - 1)), 3)
-  def curr_ar(self, level):
+  def current_ar(self, level):
     return round(self.base_ar + self.base_ar_plus * level, 2)
-  def curr_mr(self, level):
+  def current_mr(self, level):
     return round(self.base_mr + self.base_mr_plus * level, 2)
-  def curr_ms(self, level):
+  def current_ms(self, level):
     return self.base_ms
-  def curr_range(self, level):
+  def current_range(self, level):
     return self.base_range
