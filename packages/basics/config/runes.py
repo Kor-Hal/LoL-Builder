@@ -1,5 +1,5 @@
 # -*-coding:Latin-1 -*
-from packages.basics.runepage import Rune
+from packages.basics.rune import Rune
 
 # Defining the runes
 # Variable names :
@@ -36,12 +36,12 @@ n_quintessence_armor = Rune("Normal", "Quintessence", "Armor", "Primary", 410, N
 g_quintessence_armor = Rune("Greater", "Quintessence", "Armor", "Primary", 1025, None, armor=4.26)
 
 # Armor Penetration
-l_mark_armor_penetration = Rune("Lesser", "Mark", "Armor Penetration", "Primary", 30, None, armor_penetration=0.72)
-n_mark_armor_penetration = Rune("Normal", "Mark", "Armor Penetration", "Primary", 165, None, armor_penetration=1)
-g_mark_armor_penetration = Rune("Greater", "Mark", "Armor Penetration", "Primary", 410, None, armor_penetration=1.28)
-l_quintessence_armor_penetration = Rune("Lesser", "Quintessence", "Armor Penetration", "Secondary", 80, None, armor_penetration=1.42)
-n_quintessence_armor_penetration = Rune("Normal", "Quintessence", "Armor Penetration", "Secondary", 410, None, armor_penetration=1.99)
-g_quintessence_armor_penetration = Rune("Greater", "Quintessence", "Armor Penetration", "Secondary", 1025, None, armor_penetration=2.56)
+l_mark_armor_penetration = Rune("Lesser", "Mark", "Armor Penetration", "Primary", 30, None, flat_armor_penetration=0.72)
+n_mark_armor_penetration = Rune("Normal", "Mark", "Armor Penetration", "Primary", 165, None, flat_armor_penetration=1)
+g_mark_armor_penetration = Rune("Greater", "Mark", "Armor Penetration", "Primary", 410, None, flat_armor_penetration=1.28)
+l_quintessence_armor_penetration = Rune("Lesser", "Quintessence", "Armor Penetration", "Secondary", 80, None, flat_armor_penetration=1.42)
+n_quintessence_armor_penetration = Rune("Normal", "Quintessence", "Armor Penetration", "Secondary", 410, None, flat_armor_penetration=1.99)
+g_quintessence_armor_penetration = Rune("Greater", "Quintessence", "Armor Penetration", "Secondary", 1025, None, flat_armor_penetration=2.56)
 
 # Attack Damage
 l_mark_attack_damage = Rune("Lesser", "Mark", "Attack Damage", "Primary", 15, None, attack_damage=0.53)
@@ -154,12 +154,12 @@ n_quintessence_health_regeneration = Rune("Normal", "Quintessence", "Health Rege
 g_quintessence_health_regeneration = Rune("Greater", "Quintessence", "Health Regeneration", "Primary", 2050, None, health_regeneration=2.7)
 
 # Hybrid Penetration (Armor Penetration / Magic Penetration)
-l_mark_hybrid_penetration = Rune("Lesser", "Mark", "Hybrid Penetration", "Primary", 65, None, armor_penetration=0.5, magic_penetration=0.34)
-n_mark_hybrid_penetration = Rune("Normal", "Mark", "Hybrid Penetration", "Primary", 330, None, armor_penetration=0.7, magic_penetration=0.48)
-g_mark_hybrid_penetration = Rune("Greater", "Mark", "Hybrid Penetration", "Primary", 820, None, armor_penetration=0.9, magic_penetration=0.62)
-l_quintessence_hybrid_penetration = Rune("Lesser", "Quintessence", "Hybrid Penetration", "Secondary", 165, None, armor_penetration=0.99, magic_penetration=0.78)
-n_quintessence_hybrid_penetration = Rune("Normal", "Quintessence", "Hybrid Penetration", "Secondary", 820, None, armor_penetration=1.39, magic_penetration=1.09)
-g_quintessence_hybrid_penetration = Rune("Greater", "Quintessence", "Hybrid Penetration", "Secondary", 2050, None, armor_penetration=1.79, magic_penetration=1.4)
+l_mark_hybrid_penetration = Rune("Lesser", "Mark", "Hybrid Penetration", "Primary", 65, None, flat_armor_penetration=0.5, flat_magic_penetration=0.34)
+n_mark_hybrid_penetration = Rune("Normal", "Mark", "Hybrid Penetration", "Primary", 330, None, flat_armor_penetration=0.7, flat_magic_penetration=0.48)
+g_mark_hybrid_penetration = Rune("Greater", "Mark", "Hybrid Penetration", "Primary", 820, None, flat_armor_penetration=0.9, flat_magic_penetration=0.62)
+l_quintessence_hybrid_penetration = Rune("Lesser", "Quintessence", "Hybrid Penetration", "Secondary", 165, None, flat_armor_penetration=0.99, flat_magic_penetration=0.78)
+n_quintessence_hybrid_penetration = Rune("Normal", "Quintessence", "Hybrid Penetration", "Secondary", 820, None, flat_armor_penetration=1.39, flat_magic_penetration=1.09)
+g_quintessence_hybrid_penetration = Rune("Greater", "Quintessence", "Hybrid Penetration", "Secondary", 2050, None, flat_armor_penetration=1.79, flat_magic_penetration=1.4)
 
 # Life Steal
 l_quintessence_life_steal = Rune("Lesser", "Quintessence", "Life Steal", "Primary", 165, None, life_steal=0.0112)
@@ -167,15 +167,15 @@ n_quintessence_life_steal = Rune("Normal", "Quintessence", "Life Steal", "Primar
 g_quintessence_life_steal = Rune("Greater", "Quintessence", "Life Steal", "Primary", 2050, None, life_steal=0.02)
 
 # Magic Penetration
-l_mark_magic_penetration = Rune("Lesser", "Mark", "Magic Penetration", "Primary", 30, None, magic_penetration=0.49)
-n_mark_magic_penetration = Rune("Normal", "Mark", "Magic Penetration", "Primary", 165, None, magic_penetration=0.68)
-g_mark_magic_penetration = Rune("Greater", "Mark", "Magic Penetration", "Primary", 410, None, magic_penetration=0.87)
-l_glyph_magic_penetration = Rune("Lesser", "Glyph", "Magic Penetration", "Secondary", 30, None, magic_penetration=0.35)
-n_glyph_magic_penetration = Rune("Normal", "Glyph", "Magic Penetration", "Secondary", 165, None, magic_penetration=0.49)
-g_glyph_magic_penetration = Rune("Greater", "Glyph", "Magic Penetration", "Secondary", 410, None, magic_penetration=0.63)
-l_quintessence_magic_penetration = Rune("Lesser", "Quintessence", "Magic Penetration", "Secondary", 80, None, magic_penetration=1.11)
-n_quintessence_magic_penetration = Rune("Normal", "Quintessence", "Magic Penetration", "Secondary", 410, None, magic_penetration=1.56)
-g_quintessence_magic_penetration = Rune("Greater", "Quintessence", "Magic Penetration", "Secondary", 1025, None, magic_penetration=2.01)
+l_mark_magic_penetration = Rune("Lesser", "Mark", "Magic Penetration", "Primary", 30, None, flat_magic_penetration=0.49)
+n_mark_magic_penetration = Rune("Normal", "Mark", "Magic Penetration", "Primary", 165, None, flat_magic_penetration=0.68)
+g_mark_magic_penetration = Rune("Greater", "Mark", "Magic Penetration", "Primary", 410, None, flat_magic_penetration=0.87)
+l_glyph_magic_penetration = Rune("Lesser", "Glyph", "Magic Penetration", "Secondary", 30, None, flat_magic_penetration=0.35)
+n_glyph_magic_penetration = Rune("Normal", "Glyph", "Magic Penetration", "Secondary", 165, None, flat_magic_penetration=0.49)
+g_glyph_magic_penetration = Rune("Greater", "Glyph", "Magic Penetration", "Secondary", 410, None, flat_magic_penetration=0.63)
+l_quintessence_magic_penetration = Rune("Lesser", "Quintessence", "Magic Penetration", "Secondary", 80, None, flat_magic_penetration=1.11)
+n_quintessence_magic_penetration = Rune("Normal", "Quintessence", "Magic Penetration", "Secondary", 410, None, flat_magic_penetration=1.56)
+g_quintessence_magic_penetration = Rune("Greater", "Quintessence", "Magic Penetration", "Secondary", 1025, None, flat_magic_penetration=2.01)
 
 # Magic Resist
 l_mark_magic_resist = Rune("Lesser", "Mark", "Magic Resist", "Secondary", 15, None, magic_resistance=0.43)
