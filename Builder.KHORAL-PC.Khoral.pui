@@ -1,0 +1,52 @@
+[Open Files]
+Active File Display Mode=3
+Active File Index=5
+Open File Line0=0
+Open File Line1=0
+Open File Line2=4712
+Open File Line3=0
+Open File Line4=0
+Open File Line5=2808
+Open File Line6=0
+Open File Line7=0
+Open File Line8=0
+Open File Line9=589
+Open File Pos0=0
+Open File Pos1=0
+Open File Pos2=5768
+Open File Pos3=5407
+Open File Pos4=0
+Open File Pos5=0
+Open File Pos6=0
+Open File Pos7=1658
+Open File Pos8=642
+Open File Pos9=3043
+Open File Window Pos0=0,1,-1,-1,-8,-30,50,50,1543,514
+Open File Window Pos1=0,1,-1,-1,-8,-30,75,75,1568,541
+Open File Window Pos2=0,1,-1,-1,-8,-30,100,100,1593,566
+Open File Window Pos3=0,1,-1,-1,-8,-30,125,125,1618,591
+Open File Window Pos4=0,1,-1,-1,-8,-30,150,150,1643,616
+Open File Window Pos5=2,3,-1,-1,-8,-30,175,175,1668,641
+Open File Window Pos6=0,1,-1,-1,-8,-30,200,200,1693,666
+Open File Window Pos7=0,1,-1,-1,-8,-30,0,0,1493,466
+Open File Window Pos8=0,1,-1,-1,-8,-30,25,25,1518,491
+Open File Window Pos9=0,1,-1,-1,-8,-30,50,50,1543,516
+Open File0=C:\Users\Khoral\Documents\GitHub\LoL-Builder\packages\basics\__init__.py
+Open File1=C:\Users\Khoral\Documents\GitHub\LoL-Builder\packages\basics\ability.py
+Open File10=
+Open File2=C:\Users\Khoral\Documents\GitHub\LoL-Builder\packages\basics\champion.py
+Open File3=C:\Users\Khoral\Documents\GitHub\LoL-Builder\packages\basics\item.py
+Open File4=C:\Users\Khoral\Documents\GitHub\LoL-Builder\packages\basics\mastery.py
+Open File5=C:\Users\Khoral\Documents\GitHub\LoL-Builder\packages\basics\masterypage.py
+Open File6=C:\Users\Khoral\Documents\GitHub\LoL-Builder\packages\basics\rune.py
+Open File7=C:\Users\Khoral\Documents\GitHub\LoL-Builder\packages\basics\runepage.py
+Open File8=C:\Users\Khoral\Documents\GitHub\LoL-Builder\packages\champions\aatrox.py
+Open File9=.\main.py
+Remember Files=1
+
+[Project Information]
+Project Start=DD07090000001D00110025003900000079
+Working Time=1349
+[Folders]
+.\packages\=1
+.\packages\ - basics=1

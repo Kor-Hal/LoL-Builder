@@ -40,7 +40,7 @@ if __name__ == '__main__':
   
   print("AD bonus : {}".format(runes[0].attack_damage))
   print("Flat HP bonus : {}".format(runes[0].health))
-  print("Perc HP bonus : {}".format(runes[0].percent_health))
+  print("Perc HP bonus : {}%".format(runes[0].percent_health * 100))
   
   text = ("{}, au niveau {}, possède {} points de vie, {} régénération de vie toutes les 5 secondes, "
   "{} points de mana, {} régénération de mana toutes les 5 secondes, {} AD, {} en vitesse d'attaque, "
@@ -57,7 +57,7 @@ if __name__ == '__main__':
   
   print("AD bonus : {}".format(runes[0].attack_damage))
   print("HP bonus : {}".format(runes[0].health))
-  print("Perc HP bonus : {}".format(runes[0].percent_health))
+  print("Perc HP bonus : {}%".format(runes[0].percent_health * 100))
   
   text = ("{}, au niveau {}, possède {} points de vie, {} régénération de vie toutes les 5 secondes, "
   "{} points de mana, {} régénération de mana toutes les 5 secondes, {} AD, {} en vitesse d'attaque, "
