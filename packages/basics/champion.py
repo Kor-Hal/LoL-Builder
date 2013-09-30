@@ -162,10 +162,6 @@ class Champion(object):
     """Abilities of the champion."""
     return self._abilities
   
-<<<<<<< HEAD
-  # Defining current stats functions. They'll be implemented in every subclass
-  # that needs specific calculations
-=======
   @property
   def masteries(self):
    """Champion's masteries."""
@@ -190,7 +186,7 @@ class Champion(object):
    return self._itemsSet
   
   # Defining current stats functions. They'll be implemented in every subclass that needs specific calculations
->>>>>>> 9462e49370f689aebca0cc1769d12939311ed478
+
   def current_hp(self, level):
     total = 0
     total += self.base_hp + self.base_hp_plus * level # base HP

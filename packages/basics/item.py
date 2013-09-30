@@ -6,18 +6,11 @@ class Item(object):
   """
   
   def __init__(self, availability, tier, cost, menu, recipe, actives, passives, 
-<<<<<<< HEAD
                armor_penetration, attack_damage, attack_speed,
                critical_strike_chance, critical_strike_damage, life_steal,
                movement_speed, armor, health, health_regeneration,
                magic_resistance, ability_power, cooldown_reduction,
                magic_penetration, mana, mana_regeneration, spell_vamp):
-=======
-               flat_armor_penetration, perc_armor_penetrationattack_damage, attack_speed, 
-               critical_strike_chance, critical_strike_damage, life_steal, movement_speed, 
-               armor, health, health_regeneration, magic_resistance, ability_power, 
-               cooldown_reduction, magic_penetration, mana, mana_regeneration, spell_vamp):
->>>>>>> 9462e49370f689aebca0cc1769d12939311ed478
     """Initializing the item's stats.
     
     Named parmorameters :
