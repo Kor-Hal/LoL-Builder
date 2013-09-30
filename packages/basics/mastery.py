@@ -1,4 +1,4 @@
-# -*-coding:Latin-1 -*
+# -*-coding:utf-8 -*
 class Mastery(object):
   """Defines a Mastery.
   
@@ -6,7 +6,9 @@ class Mastery(object):
   
   """
   
-  def __init__(self, tree, name, description, ranks, level, max_points, points_prerequisite, mastery_prerequisite=None, icon=None):
+  def __init__(self, tree, name, description, ranks, level, max_points,
+                     points_prerequisite, mastery_prerequisite=None,
+                     icon=None):
     """ Create a new Mastery.
     
     Named parameters :
@@ -16,8 +18,10 @@ class Mastery(object):
     ranks -- Values of the different mastery's ranks
     level -- Current number of points spent in the mastery
     max_points -- Max points allowed in this mastery
-    points_prerequisite -- Number of points needed in the mastery's tree to be able to spend points in this one
-    mastery_prerequisite -- Mastery required to fill before being able to spend points in this one
+    points_prerequisite -- Number of points needed in the mastery's tree to be
+                           able to spend points in this one
+    mastery_prerequisite -- Mastery required to fill before being able to spend
+                            points in this one
     icon -- Path to the Mastery's icon
     
     """
@@ -63,12 +67,14 @@ class Mastery(object):
   
   @property
   def points_prerequisite(self):
-    """Number of points needed in the mastery's tree to be able to spend points in this one."""
+    """Number of points needed in the mastery's tree to be able to spend points
+    in this one."""
     return self._points_prerequisite
   
   @property
   def mastery_prerequisite(self):
-    """Mastery required to fill before being able to spend points in this one."""
+    """Mastery required to fill before being able to spend points in this
+    one."""
     return self._mastery_prerequisite
   
   @property
@@ -85,13 +91,13 @@ class Mastery(object):
   
   @level.setter
   def level(self, value):
-    if self.tree.points_spent >= self.points_prerequisite and \
-        self.mastery_prerequisite.level == self.mastery_prerequisite.max_points and \
-        value <= self.max_points:
+    if (self.tree.points_spent >= self.points_prerequisite and
+       self.mastery_prerequisite.level == self.mastery_prerequisite.max_points
+       and value <= self.max_points):
       self._level = value
       self.tree.points_spent += value
       self.tree.page.update_statistics()
-  
+
   def current_value(self):
     if self.level > 0:
       return self.ranks[self.level - 1]

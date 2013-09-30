@@ -1,4 +1,4 @@
-# -*-coding:Latin-1 -*
+# -*-coding:utf-8 -*
 class Champion(object):
   """Defines a champion, with its most basic stats.
   
@@ -6,13 +6,15 @@ class Champion(object):
   
   """
   
-  def __init__(self, base_hp, base_hp_plus, base_hp5, base_hp5_plus, base_mp, base_mp_plus, 
-              base_mp5, base_mp5_plus, base_ad, base_ad_plus, base_as, base_as_plus, base_ar, base_ar_plus, 
-              base_mr, base_mr_plus, base_ms, base_range,
-              abilities,
-              masteries=None,
-              runes=None,
-              itemsSet={'Slot 1': None, 'Slot 2': None, 'Slot 3': None, 'Slot 4': None, 'Slot 5': None, 'Slot 6': None}):
+  def __init__(self, base_hp, base_hp_plus, base_hp5, base_hp5_plus, base_mp,
+                     base_mp_plus, base_mp5, base_mp5_plus, base_ad,
+                     base_ad_plus, base_as, base_as_plus, base_ar,
+                     base_ar_plus, base_mr, base_mr_plus, base_ms, base_range,
+                     abilities,
+                     masteries=None,
+                     runes=None,
+                     itemsSet={'Slot 1':None, 'Slot 2':None, 'Slot 3':None,
+                               'Slot 4':None, 'Slot 5':None, 'Slot 6':None}):
     """Initializing the basic stats.
     
     Named parameters :
@@ -60,9 +62,9 @@ class Champion(object):
     self._base_ms = base_ms
     self._base_range = base_range
     self._abilities = abilities
-    self.masteries = masteries
-    self.runes = runes
-    self.itemSet = itemsSet
+    self._masteries = masteries
+    self._runes = runes
+    self._itemsSet = itemsSet
   
   @property
   def base_hp(self):
@@ -81,7 +83,8 @@ class Champion(object):
   
   @property
   def base_hp5_plus(self):
-    """Base Health Points regeneration augmentation per level of the champion."""
+    """Base Health Points regeneration augmentation per level of the
+    champion."""
     return self._base_hp5_plus
   
   @property
@@ -159,9 +162,45 @@ class Champion(object):
     """Abilities of the champion."""
     return self._abilities
   
+  @property
+  def masteries(self):
+   """Champion's masteries."""
+   return self._masteries
+  
+  @masteries.setter
+  def masteries(self, value):
+    self._masteries = value
+  
+  @property
+  def runes(self):
+   """Champion's runes"""
+   return self._runes
+  
+  @runes.setter
+  def runes(self, value):
+    self._runes = value
+  
+  @property
+  def itemsSet(self):
+   """Champion's items"""
+   return self._itemsSet
+  
   # Defining current stats functions. They'll be implemented in every subclass that needs specific calculations
+<<<<<<< HEAD
+>>>>>>> 9462e49... Adding properties to items
+=======
+
+>>>>>>> baec904... Still resolving conflicts
   def current_hp(self, level):
-    return round(self.base_hp + self.base_hp_plus * level, 2)
+    total = 0
+    total += self.base_hp + self.base_hp_plus * level # base HP
+    total += self.runes.health + self.runes.scaling_health * level # flat Health from runes
+    total += self.masteries.health + self.masteries.scaling_health * level # flat Health from masteries
+    for key in self.itemsSet.keys():
+      if self.itemsSet[key] is not None:
+        total += self.itemsSet[key].health
+    total *= 1 + self.runes.percent_health + self.masteries.percent_health
+    return round(total, 2)
   def current_hp5(self, level):
     return round(self.base_hp5 + self.base_hp5_plus * level, 2)
   def current_mp(self, level):

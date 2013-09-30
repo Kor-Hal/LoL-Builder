@@ -1,4 +1,4 @@
-# -*-coding:Latin-1 -*
+# -*-coding:utf-8 -*
 class MasteryTree(object):
   """Defines a Mastery tree.
   
@@ -45,7 +45,8 @@ class MasteryPage(object):
   
   """
     
-  def __init__(self, name, offense_masteries, defense_masteries, utility_masteries):
+  def __init__(self, name, offense_masteries, defense_masteries,
+                     utility_masteries):
     """Create a new empty Mastery page.
     
     Named parameters :
@@ -60,10 +61,15 @@ class MasteryPage(object):
     self._offense_tree = MasteryTree("Offense", offense_masteries, self)
     self._defense_tree = MasteryTree("Defense", defense_masteries, self)
     self._utility_tree = MasteryTree("Utility", utility_masteries, self)
-    self._statistics = dict(attack_speed=0, cooldown_reduction=0, scaling_attack_damage=0, scaling_ability_power=0,
-    percent_armor_penetration=0, percent_magic_penetration=0, critical_strike_damage=0, attack_damage=0, ability_power=0,
-    flat_armor_penetration=0, percent_ability_power=0, scaling_health=0, armor=0, magic_resistance=0, health=0,
-    percent_health=0, mana_regeneration=0, scaling_mana=0, spell_vamp=0, life_steal=0, movement_speed=0)
+    self._statistics = dict(attack_speed=0, cooldown_reduction=0,
+                       scaling_attack_damage=0, scaling_ability_power=0,
+                       percent_armor_penetration=0,
+                       percent_magic_penetration=0, critical_strike_damage=0,
+                       attack_damage=0, ability_power=0,
+                       flat_armor_penetration=0, percent_ability_power=0,
+                       scaling_health=0, armor=0, magic_resistance=0, health=0,
+                       percent_health=0, mana_regeneration=0, scaling_mana=0,
+                       spell_vamp=0, life_steal=0, movement_speed=0)
     
   @property
   def name(self):
@@ -199,25 +205,46 @@ class MasteryPage(object):
     for statistic in self.statistics.keys():
       self.statistics[statistic] = 0
     
-    self.statistics['ability_power'] = self.offense_tree.masteries[(4,3)].current_value()
-    self.statistics['armor'] = self.defense_tree.masteries[(2,1)].current_value()
-    self.statistics['attack_damage'] = self.offense_tree.masteries[(4,2)].current_value()
-    self.statistics['attack_speed'] = self.offense_tree.masteries[(1,2)].current_value() / 100
-    self.statistics['cooldown_reduction'] = self.offense_tree.masteries[(1,3)].current_value() / 100 + \
-                                            self.utility_tree.masteries[(5,2)].current_value()
-    self.statistics['critical_strike_damage'] = self.offense_tree.masteries[(4,1)].current_value() / 100
-    self.statistics['flat_armor_penetration'] = self.offense_tree.masteries[(5,2)].current_value()
-    self.statistics['health'] = self.defense_tree.masteries[(3,3)].current_value()
-    self.statistics['life_steal'] = self.utility_tree.masteries[(3,3)].current_value() / 100
-    self.statistics['magic_resistance'] = self.defense_tree.masteries[(2,2)].current_value()
-    self.statistics['mana_regeneration'] = self.utility_tree.masteries[(1,3)].current_value()
-    self.statistics['movement_speed'] = self.utility_tree.masteries[(6,2)].current_value() / 100
-    self.statistics['percent_ability_power'] = self.offense_tree.masteries[(5,3)].current_value() / 100
-    self.statistics['percent_armor_penetration'] = self.offense_tree.masteries[(3,2)].current_value() / 100
-    self.statistics['percent_health'] = self.defense_tree.masteries[(4,3)].current_value() / 100
-    self.statistics['percent_magic_penetration'] = self.offense_tree.masteries[(3,3)].current_value() / 100
-    self.statistics['scaling_ability_power'] = self.offense_tree.masteries[(2,3)].current_value()
-    self.statistics['scaling_attack_damage'] = self.offense_tree.masteries[(2,2)].current_value()
-    self.statistics['scaling_health'] = self.defense_tree.masteries[(1,3)].current_value()
-    self.statistics['scaling_mana'] = self.utility_tree.masteries[(2,3)].current_value()
-    self.statistics['spell_vamp'] = self.utility_tree.masteries[(3,3)].current_value() / 100
+    self.statistics['ability_power'] = \
+                  self.offense_tree.masteries[(4,3)].current_value()
+    self.statistics['armor'] = \
+                  self.defense_tree.masteries[(2,1)].current_value()
+    self.statistics['attack_damage'] = \
+                  self.offense_tree.masteries[(4,2)].current_value()
+    self.statistics['attack_speed'] = \
+                  self.offense_tree.masteries[(1,2)].current_value() / 100
+    self.statistics['cooldown_reduction'] = \
+                  self.offense_tree.masteries[(1,3)].current_value() / 100 + \
+                  self.utility_tree.masteries[(5,2)].current_value()
+    self.statistics['critical_strike_damage'] = \
+                  self.offense_tree.masteries[(4,1)].current_value() / 100
+    self.statistics['flat_armor_penetration'] = \
+                  self.offense_tree.masteries[(5,2)].current_value()
+    self.statistics['health'] = \
+                  self.defense_tree.masteries[(3,3)].current_value()
+    self.statistics['life_steal'] = \
+                  self.utility_tree.masteries[(3,3)].current_value() / 100
+    self.statistics['magic_resistance'] = \
+                  self.defense_tree.masteries[(2,2)].current_value()
+    self.statistics['mana_regeneration'] = \
+                  self.utility_tree.masteries[(1,3)].current_value()
+    self.statistics['movement_speed'] = \
+                  self.utility_tree.masteries[(6,2)].current_value() / 100
+    self.statistics['percent_ability_power'] = \
+                  self.offense_tree.masteries[(5,3)].current_value() / 100
+    self.statistics['percent_armor_penetration'] = \
+                  self.offense_tree.masteries[(3,2)].current_value() / 100
+    self.statistics['percent_health'] = \
+                  self.defense_tree.masteries[(4,3)].current_value() / 100
+    self.statistics['percent_magic_penetration'] = \
+                  self.offense_tree.masteries[(3,3)].current_value() / 100
+    self.statistics['scaling_ability_power'] = \
+                  self.offense_tree.masteries[(2,3)].current_value()
+    self.statistics['scaling_attack_damage'] = \
+                  self.offense_tree.masteries[(2,2)].current_value()
+    self.statistics['scaling_health'] = \
+                  self.defense_tree.masteries[(1,3)].current_value()
+    self.statistics['scaling_mana'] = \
+                  self.utility_tree.masteries[(2,3)].current_value()
+    self.statistics['spell_vamp'] = \
+                  self.utility_tree.masteries[(3,3)].current_value() / 100
