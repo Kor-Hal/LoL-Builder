@@ -44,6 +44,7 @@ if __name__ == '__main__':
   runes[0].add_rune(g_quintessence_percent_health, 2)
   
   print("AD bonus : {}".format(runes[0].attack_damage))
+  print("AP bonus : {}".format(runes[0].ability_power))
   print("Flat HP bonus : {}".format(runes[0].health))
   print("Perc HP bonus : {}%".format(runes[0].percent_health * 100))
   
