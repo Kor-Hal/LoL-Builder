@@ -11,15 +11,6 @@ class Item(object):
                movement_speed, armor, health, health_regeneration,
                magic_resistance, ability_power, cooldown_reduction,
                magic_penetration, mana, mana_regeneration, spell_vamp):
-<<<<<<< HEAD
-=======
-               flat_armor_penetration, perc_armor_penetrationattack_damage, attack_speed, 
-               critical_strike_chance, critical_strike_damage, life_steal, movement_speed, 
-               armor, health, health_regeneration, magic_resistance, ability_power, 
-               cooldown_reduction, magic_penetration, mana, mana_regeneration, spell_vamp):
->>>>>>> 9462e49... Adding properties to items
-=======
->>>>>>> baec904... Still resolving conflicts
     """Initializing the item's stats.
     
     Named parmorameters :

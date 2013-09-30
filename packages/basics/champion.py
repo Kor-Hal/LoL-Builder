@@ -185,17 +185,14 @@ class Champion(object):
    """Champion's items"""
    return self._itemsSet
   
-  # Defining current stats functions. They'll be implemented in every subclass that needs specific calculations
-<<<<<<< HEAD
->>>>>>> 9462e49... Adding properties to items
-=======
+  # Defining current stats functions. They'll be implemented in every subclass
+  # that needs specific calculations
 
->>>>>>> baec904... Still resolving conflicts
   def current_hp(self, level):
     total = 0
-    total += self.base_hp + self.base_hp_plus * level # base HP
-    total += self.runes.health + self.runes.scaling_health * level # flat Health from runes
-    total += self.masteries.health + self.masteries.scaling_health * level # flat Health from masteries
+    total += self.base_hp + self.base_hp_plus * level
+    total += self.runes.health + self.runes.scaling_health * level
+    total += self.masteries.health + self.masteries.scaling_health * level
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].health
