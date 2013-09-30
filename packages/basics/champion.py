@@ -62,9 +62,9 @@ class Champion(object):
     self._base_ms = base_ms
     self._base_range = base_range
     self._abilities = abilities
-    self.masteries = masteries
-    self.runes = runes
-    self.itemSet = itemsSet
+    self._masteries = masteries
+    self._runes = runes
+    self._itemsSet = itemsSet
   
   @property
   def base_hp(self):
@@ -162,10 +162,45 @@ class Champion(object):
     """Abilities of the champion."""
     return self._abilities
   
+<<<<<<< HEAD
   # Defining current stats functions. They'll be implemented in every subclass
   # that needs specific calculations
+=======
+  @property
+  def masteries(self):
+   """Champion's masteries."""
+   return self._masteries
+  
+  @masteries.setter
+  def masteries(self, value):
+    self._masteries = value
+  
+  @property
+  def runes(self):
+   """Champion's runes"""
+   return self._runes
+  
+  @runes.setter
+  def runes(self, value):
+    self._runes = value
+  
+  @property
+  def itemsSet(self):
+   """Champion's items"""
+   return self._itemsSet
+  
+  # Defining current stats functions. They'll be implemented in every subclass that needs specific calculations
+>>>>>>> 9462e49370f689aebca0cc1769d12939311ed478
   def current_hp(self, level):
-    return round(self.base_hp + self.base_hp_plus * level, 2)
+    total = 0
+    total += self.base_hp + self.base_hp_plus * level # base HP
+    total += self.runes.health + self.runes.scaling_health * level # flat Health from runes
+    total += self.masteries.health + self.masteries.scaling_health * level # flat Health from masteries
+    for key in self.itemsSet.keys():
+      if self.itemsSet[key] is not None:
+        total += self.itemsSet[key].health
+    total *= 1 + self.runes.percent_health + self.masteries.percent_health
+    return round(total, 2)
   def current_hp5(self, level):
     return round(self.base_hp5 + self.base_hp5_plus * level, 2)
   def current_mp(self, level):
