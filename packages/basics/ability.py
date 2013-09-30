@@ -1,4 +1,4 @@
-# -*-coding:Latin-1 -*
+# -*-coding:utf-8 -*
 class Ability(object):
   """ Defines a skill with its name and description.
   
@@ -6,16 +6,20 @@ class Ability(object):
   
   """
   
-  def __init__(self, name, description, archetype, kind, cooldown=None, cost=None, reach=None):
+  def __init__(self, name, description, archetype, kind, cooldown=None,
+                     cost=None, reach=None):
     """Initializing the ability's attributes.
     
     Named parameters :
     name -- Name of the ability (list to handle toggles)
-    description -- Description of the ability, as seen in game (list to handle toggles)
+    description -- Description of the ability, as seen in game
+                   (list to handle toggles)
     archetype -- Basic, Innate (= Passive) or Ultimate
     kind -- Active, Passive, Toggle or Stance
-    cooldown -- Ability's cooldown (default: None) (tuple's list to handle toggles)
-    cost -- Ability's cost (default: None) (tuple's list to handle toggles)
+    cooldown -- Ability's cooldown (default: None)
+                (tuple's list to handle toggles)
+    cost -- Ability's cost (default: None)
+            (tuple's list to handle toggles)
     reach -- Ability's range (default: None) (tuple's list to handle toggles)
     
     """

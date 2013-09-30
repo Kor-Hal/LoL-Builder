@@ -1,4 +1,4 @@
-# -*-coding:Latin-1 -*
+# -*-coding:utf-8 -*
 class Champion(object):
   """Defines a champion, with its most basic stats.
   
@@ -6,13 +6,15 @@ class Champion(object):
   
   """
   
-  def __init__(self, base_hp, base_hp_plus, base_hp5, base_hp5_plus, base_mp, base_mp_plus, 
-              base_mp5, base_mp5_plus, base_ad, base_ad_plus, base_as, base_as_plus, base_ar, base_ar_plus, 
-              base_mr, base_mr_plus, base_ms, base_range,
-              abilities,
-              masteries=None,
-              runes=None,
-              itemsSet={'Slot 1': None, 'Slot 2': None, 'Slot 3': None, 'Slot 4': None, 'Slot 5': None, 'Slot 6': None}):
+  def __init__(self, base_hp, base_hp_plus, base_hp5, base_hp5_plus, base_mp,
+                     base_mp_plus, base_mp5, base_mp5_plus, base_ad,
+                     base_ad_plus, base_as, base_as_plus, base_ar,
+                     base_ar_plus, base_mr, base_mr_plus, base_ms, base_range,
+                     abilities,
+                     masteries=None,
+                     runes=None,
+                     itemsSet={'Slot 1':None, 'Slot 2':None, 'Slot 3':None,
+                               'Slot 4':None, 'Slot 5':None, 'Slot 6':None}):
     """Initializing the basic stats.
     
     Named parameters :
@@ -81,7 +83,8 @@ class Champion(object):
   
   @property
   def base_hp5_plus(self):
-    """Base Health Points regeneration augmentation per level of the champion."""
+    """Base Health Points regeneration augmentation per level of the
+    champion."""
     return self._base_hp5_plus
   
   @property
@@ -159,7 +162,8 @@ class Champion(object):
     """Abilities of the champion."""
     return self._abilities
   
-  # Defining current stats functions. They'll be implemented in every subclass that needs specific calculations
+  # Defining current stats functions. They'll be implemented in every subclass
+  # that needs specific calculations
   def current_hp(self, level):
     return round(self.base_hp + self.base_hp_plus * level, 2)
   def current_hp5(self, level):

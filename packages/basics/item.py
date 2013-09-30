@@ -1,4 +1,4 @@
-# -*-coding:Latin-1 -*
+# -*-coding:utf-8 -*
 class Item(object):
   """Defines an item, with its basic characteristics, and the stats it gives.
   
@@ -6,9 +6,11 @@ class Item(object):
   """
   
   def __init__(self, availability, tier, cost, menu, recipe, actives, passives, 
-               armor_penetration, attack_damage, attack_speed, critical_strike_chance, critical_strike_damage, 
-               life_steal, movement_speed, armor, health, health_regeneration, magic_resistance, 
-               ability_power, cooldown_reduction, magic_penetration, mana, mana_regeneration, spell_vamp):
+               armor_penetration, attack_damage, attack_speed,
+               critical_strike_chance, critical_strike_damage, life_steal,
+               movement_speed, armor, health, health_regeneration,
+               magic_resistance, ability_power, cooldown_reduction,
+               magic_penetration, mana, mana_regeneration, spell_vamp):
     """Initializing the item's stats.
     
     Named parmorameters :
