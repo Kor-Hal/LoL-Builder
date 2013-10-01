@@ -26,7 +26,7 @@ class Ryze(champion.Champion):
     baseARPlus = 3.9
     baseMR = 30
     baseMRPlus = 0
-    baseMS = 335
+    baseMS = 340
     baseRange = 550
         
     # Abilities

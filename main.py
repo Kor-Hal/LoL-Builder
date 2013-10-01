@@ -42,9 +42,12 @@ if __name__ == '__main__':
   runes[0].add_rune(g_quintessence_attack_damage, 0)
   runes[0].add_rune(g_quintessence_health, 1)
   runes[0].add_rune(g_quintessence_percent_health, 2)
+
+  current_champ.itemsSet["Slot 1"] = giant_s_belt
   
   print("AD bonus : {}".format(runes[0].attack_damage))
-  print("Flat HP bonus : {}".format(runes[0].health))
+  print("Flat HP bonus : {}".format(runes[0].health +
+                                    current_champ.itemsSet["Slot 1"].health))
   print("Perc HP bonus : {}%".format(runes[0].percent_health * 100))
   
   text = ("{}, au niveau {}, possède {} points de vie, {} régénération de vie "
@@ -63,7 +66,8 @@ if __name__ == '__main__':
   runes[0].del_rune("Quintessence", 2)
   
   print("AD bonus : {}".format(runes[0].attack_damage))
-  print("HP bonus : {}".format(runes[0].health))
+  print("Flat HP bonus : {}".format(runes[0].health +
+                                    current_champ.itemsSet["Slot 1"].health))
   print("Perc HP bonus : {}%".format(runes[0].percent_health * 100))
   
   text = ("{}, au niveau {}, possède {} points de vie, {} régénération de vie "

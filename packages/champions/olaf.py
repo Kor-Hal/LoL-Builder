@@ -14,7 +14,7 @@ class Olaf(champion.Champion):
     baseHPPlus = 93
     baseHP5 = 7
     baseHP5Plus = 0.9
-    baseMP = 225
+    baseMP = 235
     baseMPPlus = 45
     baseMP5 = 6.5
     baseMP5Plus = 0.575

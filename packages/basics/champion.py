@@ -13,8 +13,8 @@ class Champion(object):
                      abilities,
                      masteries=None,
                      runes=None,
-                     itemsSet={'Slot 1':None, 'Slot 2':None, 'Slot 3':None,
-                               'Slot 4':None, 'Slot 5':None, 'Slot 6':None}):
+                     itemsSet={"Slot 1":None, "Slot 2":None, "Slot 3":None,
+                               "Slot 4":None, "Slot 5":None, "Slot 6":None}):
     """Initializing the basic stats.
     
     Named parameters :

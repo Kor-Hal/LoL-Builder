@@ -5,15 +5,18 @@ class Item(object):
   Ref : http://leagueoflegends.wikia.com/wiki/Item
   """
   
-  def __init__(self, availability, tier, cost, menu, recipe, actives, passives, 
-               armor_penetration, attack_damage, attack_speed,
-               critical_strike_chance, critical_strike_damage, life_steal,
-               movement_speed, armor, health, health_regeneration,
-               magic_resistance, ability_power, cooldown_reduction,
-               magic_penetration, mana, mana_regeneration, spell_vamp):
+  def __init__(self, name, availability, tier, cost=None, menu=None,
+               recipe=None, actives=None, passives=None,
+               flat_armor_penetration=0, perc_armor_penetration=0,
+               attack_damage=0, attack_speed=0, critical_strike_chance=0,
+               critical_strike_damage=0, life_steal=0, movement_speed=0,
+               armor=0, health=0, health_regeneration=0, magic_resistance=0,
+               ability_power=0, cooldown_reduction=0, magic_penetration=0,
+               mana=0, mana_regeneration=0, spell_vamp=0):
     """Initializing the item's stats.
     
     Named parmorameters :
+    name -- Item's name
     availability -- Map on which the item may be bought
     tier -- Item's tier (Consumable, Basic, Advanced, Legendary, Mythical)
     cost -- Item's cost
@@ -42,6 +45,7 @@ class Item(object):
         
     """
     
+    self._name = name
     self._availability = availability
     self._tier = tier
     self._cost = cost
@@ -68,6 +72,11 @@ class Item(object):
     self._mana_regeneration = mana_regeneration
     self._spell_vamp = spell_vamp
   
+  @property
+  def name(self):
+    """Item's name."""
+    return self._name
+
   @property
   def availabilty(self):
   	"""Map on which the item may be bought."""

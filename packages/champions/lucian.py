@@ -16,8 +16,8 @@ class Lucian(champion.Champion):
     baseHP5Plus = 0.65
     baseMP = 230
     baseMPPlus = 41
-    baseMP5 = 6
-    baseMP5Plus = 0.65
+    baseMP5 = 7
+    baseMP5Plus = 0.7
     baseAD = 46
     baseADPlus = 3
     baseAS = 0.638
