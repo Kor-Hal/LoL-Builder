@@ -6,7 +6,7 @@ class Item(object):
   """
   
   def __init__(self, name, availability, tier, cost=None, menu=None,
-               recipe=None, actives=None, passives=None,
+               recipe=None, capacities=None,
                flat_armor_penetration=0, perc_armor_penetration=0,
                attack_damage=0, attack_speed=0, critical_strike_chance=0,
                critical_strike_damage=0, life_steal=0, movement_speed=0,
@@ -22,8 +22,7 @@ class Item(object):
     cost -- Item's cost
     menu -- Menu(s) to access the item in shop
     recipe -- Item's recipe (List of items)
-    actives -- Tuple of actives (descriptions)
-    passives -- Tuple of passives (descriptions)
+    capacities -- Dict of capacities (type:description)
     flat_armor_penetration -- Flat Armor Penetration
     perc_armor_penetration -- Percent Armor Penetration
     attack_damage -- Attack Damage
@@ -51,8 +50,7 @@ class Item(object):
     self._cost = cost
     self._menu = menu
     self._recipe = recipe
-    self._actives = actives
-    self._passives = passives
+    self._capacities = capacities
     self._flat_armor_penetration = flat_armor_penetration
     self._perc_armor_penetration = perc_armor_penetration
     self._attack_damage = attack_damage
@@ -103,14 +101,9 @@ class Item(object):
   	return self._recipe
   
   @property
-  def actives(self):
-  	"""Tuple of actives (descriptions)."""
-  	return self._actives
-  
-  @property
-  def passives(self):
-  	"""Tuple of passives (descriptions)."""
-  	return self._passives
+  def capacities(self):
+  	"""Dict of capacities (type:description)."""
+  	return self._capacities
   
   @property
   def flat_armor_penetration(self):
