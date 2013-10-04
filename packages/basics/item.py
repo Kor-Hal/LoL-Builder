@@ -9,10 +9,11 @@ class Item(object):
                recipe=None, capacities=None,
                flat_armor_penetration=0, perc_armor_penetration=0,
                attack_damage=0, attack_speed=0, critical_strike_chance=0,
-               critical_strike_damage=0, life_steal=0, movement_speed=0,
-               armor=0, health=0, health_regeneration=0, magic_resistance=0,
-               ability_power=0, cooldown_reduction=0, magic_penetration=0,
-               mana=0, mana_regeneration=0, spell_vamp=0):
+               critical_strike_damage=0, life_steal=0, flat_movement_speed=0,
+               perc_movement_speed=0, armor=0, health=0, health_regeneration=0,
+               magic_resistance=0, ability_power=0, cooldown_reduction=0,
+               flat_magic_penetration=0, perc_magic_penetration=0, mana=0,
+               mana_regeneration=0, spell_vamp=0):
     """Initializing the item's stats.
     
     Named parmorameters :
@@ -30,14 +31,16 @@ class Item(object):
     critical_strike_chance -- Critical Strike Chance
     critical_strike_damage -- Critical Strike Damage
     life_steal -- Life Steal
-    movement_speed -- Movement Speed
+    flat_movement_speed -- Flat Movement Speed
+    perc_movement_speed -- Percent Movement Speed
     armor -- Armor
     health -- Health
     health_regeneration -- Health Regeneration
     magic_resistance -- Magic Resistance
     ability_power -- Ability Power
     cooldown_reduction -- Cooldown Reduction
-    magic_penetration -- Magic Penetration
+    flat_magic_penetration -- Flat Magic Penetration
+    perc_magic_penetration -- Percent Magic Penetration
     mana -- Mana
     mana_regeneration -- Mana Regeneration
     spell_vamp -- Spell Vamp
@@ -58,14 +61,16 @@ class Item(object):
     self._critical_strike_chance = critical_strike_chance
     self._critical_strike_damage = critical_strike_damage
     self._life_steal = life_steal
-    self._movement_speed = movement_speed
+    self._flat_movement_speed = flat_movement_speed
+    self._perc_movement_speed = perc_movement_speed
     self._armor = armor
     self._health = health
     self._health_regeneration = health_regeneration
     self._magic_resistance = magic_resistance
     self._ability_power = ability_power
     self._cooldown_reduction = cooldown_reduction
-    self._magic_penetration = magic_penetration
+    self._flat_magic_penetration = flat_magic_penetration
+    self._perc_magic_penetration = perc_magic_penetration
     self._mana = mana
     self._mana_regeneration = mana_regeneration
     self._spell_vamp = spell_vamp
@@ -141,9 +146,14 @@ class Item(object):
   	return self._life_steal
   
   @property
-  def movement_speed(self):
-  	"""Movement Speed."""
-  	return self._movement_speed
+  def flat_movement_speed(self):
+  	"""Flat Movement Speed."""
+  	return self._flat_movement_speed
+
+  @property
+  def perc_movement_speed(self):
+  	"""Percent Movement Speed."""
+  	return self._perc_movement_speed
   
   @property
   def armor(self):
@@ -176,9 +186,14 @@ class Item(object):
   	return self._cooldown_reduction
   
   @property
-  def magic_penetration(self):
-  	"""Magic Penetration."""
-  	return self._magic_penetration
+  def flat_magic_penetration(self):
+  	"""Flat Magic Penetration."""
+  	return self._flat_magic_penetration
+
+  @property
+  def perc_magic_penetration(self):
+  	"""Percent Magic Penetration."""
+  	return self._perc_magic_penetration
   
   @property
   def mana(self):

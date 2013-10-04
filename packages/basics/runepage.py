@@ -25,11 +25,12 @@ class RunePage(object):
                        energy=0, energy_regeneration=0, experience=0, gold=0,
                        health=0, health_regeneration=0, life_steal=0,
                        flat_magic_penetration=0, magic_resistance=0, mana=0,
-                       mana_regeneration=0, movement_speed=0, percent_health=0,
-                       revival=0, scaling_ability_power=0, scaling_armor=0,
-                       scaling_attack_damage=0, scaling_cooldown_reduction=0,
-                       scaling_energy=0, scaling_energy_regeneration=0,
-                       scaling_health=0, scaling_health_regeneration=0,
+                       mana_regeneration=0, percent_movement_speed=0,
+                       percent_health=0, revival=0, scaling_ability_power=0,
+                       scaling_armor=0, scaling_attack_damage=0,
+                       scaling_cooldown_reduction=0, scaling_energy=0,
+                       scaling_energy_regeneration=0, scaling_health=0,
+                       scaling_health_regeneration=0,
                        scaling_magic_resistance=0, scaling_mana=0,
                        scaling_mana_regeneration=0, spell_vamp=0)
   
@@ -175,9 +176,9 @@ class RunePage(object):
     return self.statistics['mana_regeneration']
   
   @property
-  def movement_speed(self):
-    """Bonus Movement Speed of the Rune page."""
-    return self.statistics['movement_speed']
+  def percent_movement_speed(self):
+    """Bonus Percent Movement Speed of the Rune page."""
+    return self.statistics['percent_movement_speed']
   
   @property
   def percent_health(self):

@@ -36,6 +36,7 @@ from packages.champions.janna import Janna
 from packages.champions.jarvan_iv import Jarvan_IV
 from packages.champions.jax import Jax
 from packages.champions.jayce import Jayce
+from packages.champions.jinx import Jinx
 from packages.champions.karma import Karma
 from packages.champions.karthus import Karthus
 from packages.champions.kassadin import Kassadin

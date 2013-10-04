@@ -191,28 +191,129 @@ class Champion(object):
   def current_hp(self, level):
     total = 0
     total += self.base_hp + self.base_hp_plus * level
-    total += self.runes.health + self.runes.scaling_health * level
-    total += self.masteries.health + self.masteries.scaling_health * level
+    if self.runes is not None:
+      total += self.runes.health + self.runes.scaling_health * level
+    if self.masteries is not None:
+      total += self.masteries.health + self.masteries.scaling_health * level
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].health
-    total *= 1 + self.runes.percent_health + self.masteries.percent_health
+
+    perc_hp = 0
+    if self.runes is not None:
+      perc_hp += self.runes.percent_health
+    if self.masteries is not None:
+      perc_hp += self.masteries.percent_health
+
+    total *= 1 + perc_hp
+
     return round(total, 2)
   def current_hp5(self, level):
-    return round(self.base_hp5 + self.base_hp5_plus * level, 2)
+    total = 0
+    total += self.base_hp5 + self.base_hp5_plus * level
+    if self.runes is not None:
+      total += (self.runes.health_regeneration +
+                self.runes.scaling_health_regeneration * level)
+    for key in self.itemsSet.keys():
+      if self.itemsSet[key] is not None:
+        total += self.itemsSet[key].health_regeneration
+
+    return round(total, 2)
   def current_mp(self, level):
-    return round(self.base_mp + self.base_mp_plus * level, 2)
+    total = 0
+    total += self.base_mp + self.base_mp_plus * level
+    if self.runes is not None:
+      total += self.runes.mana + self.runes.scaling_mana * level
+    if self.masteries is not None:
+      total += self.masteries.scaling_mana * level
+    for key in self.itemsSet.keys():
+      if self.itemsSet[key] is not None:
+        total += self.itemsSet[key].mana
+
+    return round(total, 2)
   def current_mp5(self, level):
-    return round(self.base_mp5 + self.base_mp5_plus * level, 2)
+    total = 0
+    total += self.base_mp5 + self.base_mp5_plus * level
+    if self.runes is not None:
+      total += (self.runes.mana_regeneration +
+                self.runes.scaling_mana_regeneration * level)
+    for key in self.itemsSet.keys():
+      if self.itemsSet[key] is not None:
+        total += self.itemsSet[key].mana_regeneration
+
+    return round(total, 2)
   def current_ad(self, level):
-    return round(self.base_ad + self.base_ad_plus * level, 2)
+    total = 0
+    total += self.base_ad + self.base_ad_plus * level
+    if self.runes is not None:
+      total += (self.runes.attack_damage + self.runes.scaling_attack_damage *
+                                            level)
+    if self.masteries is not None:
+      total += (self.masteries.attack_damage +
+                self.masteries.scaling_attack_damage * level)
+    for key in self.itemsSet.keys():
+      if self.itemsSet[key] is not None:
+        total += self.itemsSet[key].attack_damage
+
+    return round(total, 2)
   def current_as(self, level):
-    return round(self.base_as * (1 + self.base_as_plus * (level - 1)), 3)
+    perc_as = 0
+    perc_as += self.base_as_plus * (level - 1)
+    if self.runes is not None:
+      perc_as += self.runes.attack_speed
+    if self.masteries is not None:
+      perc_as += self.masteries.attack_speed
+    for key in self.itemsSet.keys():
+      if self.itemsSet[key] is not None:
+        perc_as += self.itemsSet[key].attack_speed
+
+    total = self.base_as * (1 + perc_as)
+
+    return round(total, 3)
   def current_ar(self, level):
-    return round(self.base_ar + self.base_ar_plus * level, 2)
+    total = 0
+    total += self.base_ar + self.base_ar_plus * level
+    if self.runes is not None:
+      total += self.runes.armor + self.runes.scaling_armor * level
+    if self.masteries is not None:
+      total += self.masteries.armor
+    for key in self.itemsSet.keys():
+      if self.itemsSet[key] is not None:
+        total += self.itemsSet[key].armor
+
+    return round(total, 2)
   def current_mr(self, level):
-    return round(self.base_mr + self.base_mr_plus * level, 2)
+    total = 0
+    total += self.base_mr + self.base_mr_plus * level
+    if self.runes is not None:
+      total += (self.runes.magic_resistance +
+                self.runes.scaling_magic_resistance * level)
+    if self.masteries is not None:
+      total += self.masteries.magic_resistance
+    for key in self.itemsSet.keys():
+      if self.itemsSet[key] is not None:
+        total += self.itemsSet[key].magic_resistance
+
+    return round(total, 2)
   def current_ms(self, level):
-    return self.base_ms
+    total = 0
+
+    total += self.base_ms
+    if self.masteries is not None:
+      total += self.masteries.movement_speed
+    for key in self.itemsSet.keys():
+      if self.itemsSet[key] is not None:
+        total += self.itemsSet[key].flat_movement_speed
+
+    perc_ms = 0
+    if self.runes is not None:
+      perc_ms += self.runes.percent_movement_speed
+    for key in self.itemsSet.keys():
+      if self.itemsSet[key] is not None:
+        perc_ms += self.itemsSet[key].perc_movement_speed
+
+    total *= 1 + perc_ms
+
+    return round(total, 2)
   def current_range(self, level):
     return self.base_range

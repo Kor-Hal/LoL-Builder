@@ -444,13 +444,13 @@ g_quintessence_mana_regeneration = Rune("Greater", "Quintessence",
 # Movement Speed
 l_quintessence_movement_speed = Rune("Lesser", "Quintessence",
                                 "Movement Speed", "Primary",
-                                165, None, movement_speed=0.0083)
+                                165, None, percent_movement_speed=0.0083)
 n_quintessence_movement_speed = Rune("Normal", "Quintessence",
                                 "Movement Speed", "Primary",
-                                820, None, movement_speed=0.0117)
+                                820, None, percent_movement_speed=0.0117)
 g_quintessence_movement_speed = Rune("Greater", "Quintessence",
                                 "Movement Speed", "Primary",
-                                2050, None, movement_speed=0.015)
+                                2050, None, percent_movement_speed=0.015)
 
 # Percent Health
 l_seal_percent_health = Rune("Lesser", "Seal", "Percent Health", "Primary",

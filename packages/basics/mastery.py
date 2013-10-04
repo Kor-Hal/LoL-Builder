@@ -91,15 +91,22 @@ class Mastery(object):
   
   @level.setter
   def level(self, value):
-    if (self.tree.points_spent >= self.points_prerequisite and
-       self.mastery_prerequisite.level == self.mastery_prerequisite.max_points
-       and value <= self.max_points):
-      self._level = value
-      self.tree.points_spent += value
-      self.tree.page.update_statistics()
+    if self.mastery_prerequisite is not None:
+      if (self.tree.points_spent >= self.points_prerequisite and
+         self.mastery_prerequisite.level ==
+          self.mastery_prerequisite.max_points and value <= self.max_points):
+        self._level = value
+        self.tree.points_spent += value
+        self.tree.page.update_statistics()
+    else:
+      if (self.tree.points_spent >= self.points_prerequisite and
+          value <= self.max_points):
+        self._level = value
+        self.tree.points_spent += value
+        self.tree.page.update_statistics()
 
   def current_value(self):
-    if self.level > 0:
+    if self.level > 0 and self.ranks is not None:
       return self.ranks[self.level - 1]
     else:
       return 0

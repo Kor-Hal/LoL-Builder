@@ -13,7 +13,7 @@ class Rune(object):
                energy_regeneration=0, experience=0, gold=0, health=0,
                health_regeneration=0, life_steal=0, flat_magic_penetration=0,
                magic_resistance=0, mana=0, mana_regeneration=0,
-               movement_speed=0, percent_health=0, revival=0,
+               percent_movement_speed=0, percent_health=0, revival=0,
                scaling_ability_power=0, scaling_armor=0,
                scaling_attack_damage=0, scaling_cooldown_reduction=0,
                scaling_energy=0, scaling_energy_regeneration=0,
@@ -48,7 +48,7 @@ class Rune(object):
     magic_resistance -- Bonus MR
     mana -- Bonus MP
     mana_regeneration -- Bonus MP5
-    movement_speed -- Bonus MS
+    percent_movement_speed -- Bonus Percent MS
     percent_health -- Bonus Percent HP
     revival -- Reduction of time dead
     scaling_ability_power -- Bonus AP per level
@@ -90,7 +90,7 @@ class Rune(object):
     self._magic_resistance = magic_resistance
     self._mana = mana
     self._mana_regeneration = mana_regeneration
-    self._movement_speed = movement_speed
+    self._percent_movement_speed = percent_movement_speed
     self._percent_health = percent_health
     self._revival = revival
     self._scaling_ability_power = scaling_ability_power
@@ -227,9 +227,9 @@ class Rune(object):
     return self._mana_regeneration
   
   @property
-  def movement_speed(self):
-    """Rune's movement speed bonus."""
-    return self._movement_speed
+  def percent_movement_speed(self):
+    """Rune's percent movement speed bonus."""
+    return self._percent_movement_speed
   
   @property
   def percent_health(self):

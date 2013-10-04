@@ -39,9 +39,9 @@ offense_masteries[(2,4)] = destruction
 # Tier 3
 havoc = Mastery(None, "Havoc", "Increases damage dealt by {}%.", (0.67,1.33,2),
         0, 3, 8)
-weapon_expertise = Mastery(None, ("Weapon Expertise", "Grants 8% armor "
+weapon_expertise = Mastery(None, "Weapon Expertise", ("Grants 8% armor "
                    "penetration."), None, 0, 1, 8, deadliness)
-arcane_knowledge = Mastery(None, ("Arcane Knowledge", "Grants 8% magic "
+arcane_knowledge = Mastery(None, "Arcane Knowledge", ("Grants 8% magic "
                    "penetration."), None, 0, 1, 8, blast)
 
 offense_masteries[(3,1)] = havoc
@@ -252,7 +252,7 @@ utility_masteries[(5,1)] = pickpocket
 utility_masteries[(5,2)] = intelligence
 
 # Tier 6
-nimble = Mastery(None, (6,2), "Nimble", "Grants 3% movement speed.", None, 0,
+nimble = Mastery(None, "Nimble", "Grants 3% movement speed.", None, 0,
          1, 20)
 
 utility_masteries[(6,2)] = nimble
