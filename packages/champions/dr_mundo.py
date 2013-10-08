@@ -1,4 +1,4 @@
-# -*-coding:Latin-1 -*
+# -*-coding:utf-8 -*
 from packages.basics import champion, ability
 
 class Dr_Mundo(champion.Champion):
@@ -10,24 +10,24 @@ class Dr_Mundo(champion.Champion):
   
   def __init__(self):
     # Basic stats
-    baseHP = 433
-    baseHPPlus = 89
-    baseHP5 = 6.5
-    baseHP5Plus = 0.75
-    baseMP = 0
-    baseMPPlus = 0
-    baseMP5 = 0
-    baseMP5Plus = 0
-    baseAD = 56.23
-    baseADPlus = 3
-    baseAS = 0.625
-    baseASPlus = 0.028
-    baseAR = 17
-    baseARPlus = 3.5
-    baseMR = 30
-    baseMRPlus = 1.25
-    baseMS = 345
-    baseRange = 125
+    base_hp = 433
+    base_hp_plus = 89
+    base_hp5 = 6.5
+    base_hp5_plus = 0.75
+    base_mp = 0
+    base_mp_plus = 0
+    base_mp5 = 0
+    base_mp5_plus = 0
+    base_ad = 56.23
+    base_ad_plus = 3
+    base_as = 0.625
+    base_as_plus = 0.028
+    base_ar = 17
+    base_ar_plus = 3.5
+    base_mr = 30
+    base_mr_plus = 1.25
+    base_ms = 345
+    base_range = 125
         
     # Abilities
     # Passive - Blood Well
@@ -61,32 +61,9 @@ class Dr_Mundo(champion.Champion):
     #attacks are still considered melee."""],
     #"Ultimate", "Active", [(100, 85, 70)], [("No cost",)])
     
-    champion.Champion.__init__(self, baseHP, baseHPPlus, baseHP5, baseHP5Plus, baseMP, baseMPPlus, 
-                              baseMP5, baseMP5Plus, baseAD, baseADPlus, baseAS, baseASPlus, baseAR, baseARPlus, 
-                              baseMR, baseMRPlus, baseMS, baseRange,
-                              [passive, ability1, ability2, ability3, ability4],
-                              {},
-                              {},
-                              {'Slot 1': None, 'Slot 2': None, 'Slot 3': None, 'Slot 4': None, 'Slot 5': None, 'Slot 6': None})
-  
-  # Defining current stats functions.
-  def curr_hp(self, level):
-    return round(self.baseHP + self.baseHPPlus * level, 2)
-  def curr_hp5(self, level):
-    return round(self.baseHP5 + self.baseHP5Plus * level, 2)
-  def curr_mp(self, level):
-    return round(self.baseMP + self.baseMPPlus * level, 2)
-  def curr_mp5(self, level):
-    return round(self.baseMP5 + self.baseMP5Plus * level, 2)
-  def curr_ad(self, level):
-    return round(self.baseAD + self.baseADPlus * level, 2)
-  def curr_as(self, level):
-    return round(self.baseAS * (1 + self.baseASPlus * (level - 1)), 3)
-  def curr_ar(self, level):
-    return round(self.baseAR + self.baseARPlus * level, 2)
-  def curr_mr(self, level):
-    return round(self.baseMR + self.baseMRPlus * level, 2)
-  def curr_ms(self, level):
-    return self.baseMS
-  def curr_range(self, level):
-    return self.baseRange
+    champion.Champion.__init__(self, base_hp, base_hp_plus, base_hp5,
+                               base_hp5_plus, base_mp, base_mp_plus, base_mp5,
+                               base_mp5_plus, base_ad, base_ad_plus, base_as,
+                               base_as_plus, base_ar, base_ar_plus, base_mr,
+                               base_mr_plus, base_ms, base_range, [passive,
+                               ability1, ability2, ability3, ability4])

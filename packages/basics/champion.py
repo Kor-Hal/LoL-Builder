@@ -10,6 +10,7 @@ class Champion(object):
                      base_mp_plus, base_mp5, base_mp5_plus, base_ad,
                      base_ad_plus, base_as, base_as_plus, base_ar,
                      base_ar_plus, base_mr, base_mr_plus, base_ms, base_range,
+                     resource,
                      abilities,
                      masteries=None,
                      runes=None,
@@ -36,6 +37,7 @@ class Champion(object):
     base_mr_plus -- Base magic resistance per level
     base_ms -- Base movement speed
     base_range -- Base range
+    resource -- Champion's Resource (Mana, Energy, Health, None)
     abilities -- Champion's abilities
     masteries -- Champion's masteries
     runes -- Champion's runes
@@ -61,6 +63,7 @@ class Champion(object):
     self._base_mr_plus = base_mr_plus
     self._base_ms = base_ms
     self._base_range = base_range
+    self._resource = resource
     self._abilities = abilities
     self._masteries = masteries
     self._runes = runes
@@ -157,6 +160,11 @@ class Champion(object):
     """Base Range of the champion."""
     return self._base_range
   
+  @property
+  def resource(self):
+    """Champion's Resource."""
+    return self._resource
+
   @property
   def abilities(self):
     """Abilities of the champion."""
