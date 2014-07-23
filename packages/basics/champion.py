@@ -43,8 +43,8 @@ class Champion(metaclass=ABCMeta):
     base_hp5_plus -- Base health regeneration per level
     base_resource -- Base mana/energy
     base_resource_plus -- Base mana/energy per level
-    base_resource5 -- Base mana/energy regeneration
-    base_resource5_plus -- Base mana/energy regeneration per level
+    base_resourceper5 -- Base mana/energy regeneration
+    base_resourceper5_plus -- Base mana/energy regeneration per level
     base_ad -- Base attack damage
     base_ad_plus -- Base attack damage per level
     base_as -- Base attack speed
@@ -275,9 +275,9 @@ class Champion(metaclass=ABCMeta):
 
     return round(total, 2)
     
-  def current_resource(self):
+  def current_mp(self):
     total = 0
-    total += self.base_mp + self.base_mp_plus * self.currentLevel
+    total += self.base_resource + self.base_resource_plus * self.currentLevel
     if self.runes is not None:
       total += self.runes.mana + self.runes.scaling_mana * self.currentLevel
     if self.masteries is not None:
@@ -289,9 +289,9 @@ class Champion(metaclass=ABCMeta):
 
     return round(total, 2)
     
-  def current_resource5(self):
+  def current_mp5(self):
     total = 0
-    total += self.base_mp5 + self.base_mp5_plus * self.currentLevel
+    total += self.base_resourceper5 + self.base_resourceper5_plus * self.currentLevel
     if self.runes is not None:
       total += (self.runes.mana_regeneration +
                 self.runes.scaling_mana_regeneration * self.currentLevel)

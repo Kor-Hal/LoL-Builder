@@ -40,7 +40,7 @@ if __name__ == '__main__':
   "points de résistance magique, {} en vitesse de déplacement et {} range")
   print(text.format(current_champ.__class__.__name__, current_champ.currentLevel, 
   current_champ.current_hp(), current_champ.current_hp5(),
-  current_champ.current_resource(), current_champ.current_resource5(),
+  current_champ.current_mp(), current_champ.current_mp5(),
   current_champ.current_ad(), current_champ.current_as(),
   current_champ.current_ar(), current_champ.current_mr(),
   current_champ.current_ms(), current_champ.current_range()))
@@ -70,7 +70,7 @@ if __name__ == '__main__':
   "points de résistance magique, {} en vitesse de déplacement et {} range")
   print(text.format(current_champ.__class__.__name__, current_champ.currentLevel,
   current_champ.current_hp(), current_champ.current_hp5(),
-  current_champ.current_resource(), current_champ.current_resource5(),
+  current_champ.current_mp(), current_champ.current_mp5(),
   current_champ.current_ad(), current_champ.current_as(),
   current_champ.current_ar(), current_champ.current_mr(),
   current_champ.current_ms(), current_champ.current_range()))
