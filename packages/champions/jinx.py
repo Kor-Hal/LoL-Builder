@@ -7,7 +7,7 @@ class Jinx(champion.Champion):
   Ref : http://leagueoflegends.wikia.com/wiki/Jinx
 
   """
-
+  
   def __init__(self):
     # Abilities
     # Passive - Get Excited!
@@ -15,7 +15,7 @@ class Jinx(champion.Champion):
     "tower that Jinx has dealt damage to within the last 3 seconds is killed "
     "or destroyed, she gains 175% Movement Speed that decays over 4 seconds."],
     "Innate", "Passive")
-
+    
     # Q/A - Switcheroo!
     ability1 = ability.Ability(["Switcheroo!"], ["TOGGLE OFF - POW-POW, THE "
     "MINIGUN: Jinx's basic attacks grant bonus attack speed for 2.5 seconds, "
@@ -29,14 +29,14 @@ class Jinx(champion.Champion):
     "(Pending for test). The bonus damage to her target and the splash damage "
     "both scale additively with critical strikes."], "Basic", "Toggle",
     [(1,),(1,)], [(None,),("20 mana per attack",)])
-
+    
     # W/Z - Zap!
     ability2 = ability.Ability(["Zap!"], ["After a short delay, Jinx fires "
     "a shock blast that deals physical damage to the first enemy hit, also "
     "granting true sight and slowing it for 2 seconds."],
     "Basic", "Active", [(10,9,8,7,6)], [("45 Mana","55 Mana","65 Mana","75 "
     "Mana","85 Mana")], [(1500,1500,1500,1500,1500)])
-
+    
     # E - Flame Chompers!
     ability3 = ability.Ability(["Flame Chompers!"], ["Jinx tosses out 3 "
     "chompers that, once armed, explode on contact with enemy champions "
@@ -45,7 +45,7 @@ class Jinx(champion.Champion):
     "explode automatically after 5 seconds."], "Basic", "Active",
     [(24,20,18,16,12)], [("50 Mana","50 Mana","50 Mana","50 Mana","50 Mana",)],
     [(950,950,950,950,950)])
-
+    
     # R (Ultimate) - Super Mega Death Rocket!
     ability4 = ability.Ability(["Super Mega Death Rocket!"], ["Jinx fires a "
     "rocket that gains damage over the first second it travels. It explodes "
@@ -79,4 +79,3 @@ class Jinx(champion.Champion):
                                 ability2,   # Ability 2 (W/Z)
                                 ability3,   # Ability 3 (E)
                                 ability4])  # Ability 4 (R)
-
