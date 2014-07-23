@@ -6,8 +6,14 @@ class Ability(object):
   
   """
   
-  def __init__(self, name, description, archetype, kind, cooldown=None,
-                     cost=None, reach=None):
+  def __init__(self,
+               name,
+               description,
+               archetype,
+               kind,
+               cooldown=None,
+               cost=None,
+               reach=None):
     """Initializing the ability's attributes.
     
     Named parameters :

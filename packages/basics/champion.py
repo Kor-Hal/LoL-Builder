@@ -1,21 +1,39 @@
 # -*-coding:utf-8 -*
-class Champion(object):
+from abc import ABCMeta
+
+class Champion(metaclass=ABCMeta):
   """Defines a champion, with its most basic stats.
+  This class should never be implemented. It's only here to be inherited and provide useful generic functions.
   
   Ref : http://leagueoflegends.wikia.com/wiki/Base_champion_statistics
   
   """
   
-  def __init__(self, base_hp, base_hp_plus, base_hp5, base_hp5_plus, base_mp,
-                     base_mp_plus, base_mp5, base_mp5_plus, base_ad,
-                     base_ad_plus, base_as, base_as_plus, base_ar,
-                     base_ar_plus, base_mr, base_mr_plus, base_ms, base_range,
-                     resource,
-                     abilities,
-                     masteries=None,
-                     runes=None,
-                     itemsSet={"Slot 1":None, "Slot 2":None, "Slot 3":None,
-                               "Slot 4":None, "Slot 5":None, "Slot 6":None}):
+  def __init__(self,
+               base_hp=None,
+               base_hp_plus=None,
+               base_hp5=None,
+               base_hp5_plus=None,
+               base_resource=None,
+               base_resource_plus=None,
+               base_resourceper5=None,
+               base_resourceper5_plus=None,
+               base_ad=None,
+               base_ad_plus=None,
+               base_as=None,
+               base_as_plus=None,
+               base_ar=None,
+               base_ar_plus=None,
+               base_mr=None,
+               base_mr_plus=None,
+               base_ms=None,
+               base_range=None,
+               resource=None,
+               abilities=None,
+               masteries=None,
+               runes=None,
+               itemsSet={"Slot 1":None, "Slot 2":None, "Slot 3":None,
+                         "Slot 4":None, "Slot 5":None, "Slot 6":None}):
     """Initializing the basic stats.
     
     Named parameters :
@@ -23,10 +41,10 @@ class Champion(object):
     base_hp_plus -- Base health per level
     base_hp5 -- Base health regeneration
     base_hp5_plus -- Base health regeneration per level
-    base_mp -- Base mana/energy
-    base_mp_plus -- Base mana/energy per level
-    base_mp5 -- Base mana/energy regeneration
-    base_mp5_plus -- Base mana/energy regeneration per level
+    base_resource -- Base mana/energy
+    base_resource_plus -- Base mana/energy per level
+    base_resourceper5 -- Base mana/energy regeneration
+    base_resourceper5_plus -- Base mana/energy regeneration per level
     base_ad -- Base attack damage
     base_ad_plus -- Base attack damage per level
     base_as -- Base attack speed
@@ -49,10 +67,10 @@ class Champion(object):
     self._base_hp_plus = base_hp_plus
     self._base_hp5 = base_hp5
     self._base_hp5_plus = base_hp5_plus
-    self._base_mp = base_mp
-    self._base_mp_plus = base_mp_plus
-    self._base_mp5 = base_mp5
-    self._base_mp5_plus = base_mp5_plus
+    self._base_resource = base_resource
+    self._base_resource_plus = base_resource_plus
+    self._base_resourceper5 = base_resourceper5
+    self._base_resourceper5_plus = base_resourceper5_plus
     self._base_ad = base_ad
     self._base_ad_plus = base_ad_plus
     self._base_as = base_as
@@ -68,6 +86,8 @@ class Champion(object):
     self._masteries = masteries
     self._runes = runes
     self._itemsSet = itemsSet
+    
+    self._currentLevel = 0
   
   @property
   def base_hp(self):
@@ -91,24 +111,24 @@ class Champion(object):
     return self._base_hp5_plus
   
   @property
-  def base_mp(self):
+  def base_resource(self):
     """Base Mana Points of the champion."""
-    return self._base_mp
+    return self._base_resource
   
   @property
-  def base_mp_plus(self):
+  def base_resource_plus(self):
     """Base Mana Points augmentation per level of the champion."""
-    return self._base_mp_plus
+    return self._base_resource_plus
   
   @property
-  def base_mp5(self):
+  def base_resourceper5(self):
     """Base Mana Points regeneration of the champion."""
-    return self._base_mp5
+    return self._base_resourceper5
   
   @property
-  def base_mp5_plus(self):
+  def base_resourceper5_plus(self):
     """Base Mana Points regeneration augmentation per level of the champion."""
-    return self._base_mp5_plus
+    return self._base_resourceper5_plus
     
   @property
   def base_ad(self):
@@ -193,16 +213,28 @@ class Champion(object):
    """Champion's items"""
    return self._itemsSet
   
+  @property
+  def level(self):
+    """Current level of the champion. Goes from 1 to 18."""
+    return self._currentLevel
+  
+  @level.setter
+  def level(self, value):
+    if value < 1 or value > 18: # Level must be between 1 and 18
+      raise ValueError
+    else:
+      self._currentLevel = value
+  
   # Defining current stats functions. They'll be implemented in every subclass
   # that needs specific calculations
 
-  def current_hp(self, level):
+  def current_hp(self):
     total = 0
-    total += self.base_hp + self.base_hp_plus * level
+    total += self.base_hp + self.base_hp_plus * self.level
     if self.runes is not None:
-      total += self.runes.health + self.runes.scaling_health * level
+      total += self.runes.health + self.runes.scaling_health * self.level
     if self.masteries is not None:
-      total += self.masteries.health + self.masteries.scaling_health * level
+      total += self.masteries.health + self.masteries.scaling_health * self.level
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].health
@@ -216,57 +248,61 @@ class Champion(object):
     total *= 1 + perc_hp
 
     return round(total, 2)
-  def current_hp5(self, level):
+    
+  def current_hp5(self):
     total = 0
-    total += self.base_hp5 + self.base_hp5_plus * level
+    total += self.base_hp5 + self.base_hp5_plus * self.level
     if self.runes is not None:
       total += (self.runes.health_regeneration +
-                self.runes.scaling_health_regeneration * level)
+                self.runes.scaling_health_regeneration * self.level)
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].health_regeneration
 
     return round(total, 2)
-  def current_mp(self, level):
+    
+  def current_mp(self):
     total = 0
-    total += self.base_mp + self.base_mp_plus * level
+    total += self.base_resource + self.base_resource_plus * self.level
     if self.runes is not None:
-      total += self.runes.mana + self.runes.scaling_mana * level
+      total += self.runes.mana + self.runes.scaling_mana * self.level
     if self.masteries is not None:
-      total += self.masteries.scaling_mana * level
+      total += self.masteries.scaling_mana * self.level
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].mana
 
     return round(total, 2)
-  def current_mp5(self, level):
+    
+  def current_mp5(self):
     total = 0
-    total += self.base_mp5 + self.base_mp5_plus * level
+    total += self.base_resourceper5 + self.base_resourceper5_plus * self.level
     if self.runes is not None:
       total += (self.runes.mana_regeneration +
-                self.runes.scaling_mana_regeneration * level)
+                self.runes.scaling_mana_regeneration * self.level)
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].mana_regeneration
 
     return round(total, 2)
-  def current_ad(self, level):
+    
+  def current_ad(self):
     total = 0
-    total += self.base_ad + self.base_ad_plus * level
+    total += self.base_ad + self.base_ad_plus * self.level
     if self.runes is not None:
-      total += (self.runes.attack_damage + self.runes.scaling_attack_damage *
-                                            level)
+      total += (self.runes.attack_damage + self.runes.scaling_attack_damage * self.level)
     if self.masteries is not None:
       total += (self.masteries.attack_damage +
-                self.masteries.scaling_attack_damage * level)
+                self.masteries.scaling_attack_damage * self.level)
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].attack_damage
 
     return round(total, 2)
-  def current_as(self, level):
+    
+  def current_as(self):
     perc_as = 0
-    perc_as += self.base_as_plus * (level - 1)
+    perc_as += self.base_as_plus * (self.level - 1)
     if self.runes is not None:
       perc_as += self.runes.attack_speed
     if self.masteries is not None:
@@ -278,11 +314,12 @@ class Champion(object):
     total = self.base_as * (1 + perc_as)
 
     return round(total, 3)
-  def current_ar(self, level):
+    
+  def current_ar(self):
     total = 0
-    total += self.base_ar + self.base_ar_plus * level
+    total += self.base_ar + self.base_ar_plus * self.level
     if self.runes is not None:
-      total += self.runes.armor + self.runes.scaling_armor * level
+      total += self.runes.armor + self.runes.scaling_armor * self.level
     if self.masteries is not None:
       total += self.masteries.armor
     for key in self.itemsSet.keys():
@@ -290,12 +327,13 @@ class Champion(object):
         total += self.itemsSet[key].armor
 
     return round(total, 2)
-  def current_mr(self, level):
+    
+  def current_mr(self):
     total = 0
-    total += self.base_mr + self.base_mr_plus * level
+    total += self.base_mr + self.base_mr_plus * self.level
     if self.runes is not None:
       total += (self.runes.magic_resistance +
-                self.runes.scaling_magic_resistance * level)
+                self.runes.scaling_magic_resistance * self.level)
     if self.masteries is not None:
       total += self.masteries.magic_resistance
     for key in self.itemsSet.keys():
@@ -303,9 +341,9 @@ class Champion(object):
         total += self.itemsSet[key].magic_resistance
 
     return round(total, 2)
-  def current_ms(self, level):
+    
+  def current_ms(self):
     total = 0
-
     total += self.base_ms
     if self.masteries is not None:
       total += self.masteries.movement_speed
@@ -323,5 +361,6 @@ class Champion(object):
     total *= 1 + perc_ms
 
     return round(total, 2)
-  def current_range(self, level):
+    
+  def current_range(self):
     return self.base_range

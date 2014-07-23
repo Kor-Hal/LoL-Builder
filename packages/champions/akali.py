@@ -9,26 +9,6 @@ class Akali(champion.Champion):
   """
   
   def __init__(self):
-    # Basic stats
-    base_hp = 445
-    base_hp_plus = 85
-    base_hp5 = 7.25
-    base_hp5_plus = 0.65
-    base_mp = 200
-    base_mp_plus = 0
-    base_mp5 = 50
-    base_mp5_plus = 0
-    base_ad = 53
-    base_ad_plus = 3.2
-    base_as = 0.694
-    base_as_plus = 0.031
-    base_ar = 16.5
-    base_ar_plus = 3.5
-    base_mr = 30
-    base_mr_plus = 1.25
-    base_ms = 350
-    base_range = 125
-        
     # Abilities
     # Passive - Twin Disciplines
     passive = ability.Ability(["Twin Disciplines"], ["Discipline of Force : "
@@ -64,10 +44,29 @@ class Akali(champion.Champion):
     "up to a maximum of 3. Additionally, gaining a kill or assist will "
     "restore an Essence of Shadow."], "Ultimate", "Active", [(2,1.5,1)],
     [("1 Essence of Shadow",)], [(800,)])
-    
-    champion.Champion.__init__(self, base_hp, base_hp_plus, base_hp5,
-                               base_hp5_plus, base_mp, base_mp_plus, base_mp5,
-                               base_mp5_plus, base_ad, base_ad_plus, base_as,
-                               base_as_plus, base_ar, base_ar_plus, base_mr,
-                               base_mr_plus, base_ms, base_range, "Energy",
-                               [passive,ability1,ability2,ability3,ability4])
+
+    champion.Champion.__init__(self,
+                               445,         # Base Health
+                               85,          # Base Health per level
+                               7.25,        # Base Health per 5
+                               0.65,        # Base Health per 5 per level
+                               200,         # Base Resource
+                               0,           # Base Resource per level
+                               50,          # Base Resource per 5
+                               0,           # Base Resource per 5 per level
+                               53,          # Base Attack Damage
+                               3.2,         # Base Attack Damage per level
+                               0.694,       # Base Attack Speed
+                               0.031,       # Base Attack Speed per level
+                               16.5,        # Base Armor
+                               3.5,         # Base Armor per level
+                               30,          # Base Magic Resistance
+                               1.25,        # Base Magic Resistance per level
+                               350,         # Base Movement Speed
+                               125,         # Base Range
+                               "Energy",    # Resource
+                               [passive,    # Passive
+                                ability1,   # Ability 1 (Q/A)
+                                ability2,   # Ability 2 (W/Z)
+                                ability3,   # Ability 3 (E)
+                                ability4])  # Ability 4 (R)

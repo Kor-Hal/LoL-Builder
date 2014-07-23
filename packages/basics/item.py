@@ -5,15 +5,34 @@ class Item(object):
   Ref : http://leagueoflegends.wikia.com/wiki/Item
   """
   
-  def __init__(self, name, availability, tier, cost=None, menu=None,
-               recipe=None, capacities=None,
-               flat_armor_penetration=0, perc_armor_penetration=0,
-               attack_damage=0, attack_speed=0, critical_strike_chance=0,
-               critical_strike_damage=0, life_steal=0, flat_movement_speed=0,
-               perc_movement_speed=0, armor=0, health=0, health_regeneration=0,
-               magic_resistance=0, ability_power=0, cooldown_reduction=0,
-               flat_magic_penetration=0, perc_magic_penetration=0, mana=0,
-               mana_regeneration=0, spell_vamp=0):
+  def __init__(self,
+               name,
+               availability,
+               tier,
+               cost=None,
+               menu=None,
+               recipe=None,
+               capacities=None,
+               flat_armor_penetration=0,
+               perc_armor_penetration=0,
+               attack_damage=0,
+               attack_speed=0,
+               critical_strike_chance=0,
+               critical_strike_damage=0,
+               life_steal=0,
+               flat_movement_speed=0,
+               perc_movement_speed=0,
+               armor=0,
+               health=0,
+               health_regeneration=0,
+               magic_resistance=0,
+               ability_power=0,
+               cooldown_reduction=0,
+               flat_magic_penetration=0,
+               perc_magic_penetration=0,
+               mana=0,
+               mana_regeneration=0,
+               spell_vamp=0):
     """Initializing the item's stats.
     
     Named parmorameters :

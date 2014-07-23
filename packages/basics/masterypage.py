@@ -6,7 +6,10 @@ class MasteryTree(object):
   
   """
     
-  def __init__(self, name, masteries, page):
+  def __init__(self,
+               name,
+               masteries,
+               page):
     """Create a new mastery tree.
     
     Named parameters :
@@ -45,8 +48,11 @@ class MasteryPage(object):
   
   """
     
-  def __init__(self, name, offense_masteries, defense_masteries,
-                     utility_masteries):
+  def __init__(self,
+               name,
+               offense_masteries,
+               defense_masteries,
+               utility_masteries):
     """Create a new empty Mastery page.
     
     Named parameters :

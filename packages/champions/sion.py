@@ -9,26 +9,6 @@ class Sion(champion.Champion):
   """
   
   def __init__(self):
-    # Basic stats
-    base_hp = 403
-    base_hp_plus = 104
-    base_hp5 = 7.9
-    base_hp5_plus = 0.95
-    base_mp = 200
-    base_mp_plus = 40
-    base_mp5 = 6.3
-    base_mp5_plus = 0.4
-    base_ad = 55.52
-    base_ad_plus = 3.1875
-    base_as = 0.625
-    base_as_plus = 0.0163
-    base_ar = 17.75
-    base_ar_plus = 3.25
-    base_mr = 30
-    base_mr_plus = 1.25
-    base_ms = 345
-    base_range = 125
-        
     # Abilities
     # Passive - Blood Well
     #passive = ability.Ability(["Blood Well"], ["""Whenever Aatrox uses an ability that costs health, he stores 100% of the health 
@@ -60,10 +40,29 @@ class Sion(champion.Champion):
     #champions.\n\nFor the next 12 seconds, Aatrox gains bonus attack speed and 175 bonus attack range (325 total range). His 
     #attacks are still considered melee."""],
     #"Ultimate", "Active", [(100, 85, 70)], [("No cost",)])
-    
-    champion.Champion.__init__(self, base_hp, base_hp_plus, base_hp5,
-                               base_hp5_plus, base_mp, base_mp_plus, base_mp5,
-                               base_mp5_plus, base_ad, base_ad_plus, base_as,
-                               base_as_plus, base_ar, base_ar_plus, base_mr,
-                               base_mr_plus, base_ms, base_range, [passive,
-                               ability1, ability2, ability3, ability4])
+
+    champion.Champion.__init__(self,
+                               403,         # Base Health
+                               104,         # Base Health per level
+                               7.9,         # Base Health per 5
+                               0.95,        # Base Health per 5 per level
+                               200,         # Base Resource
+                               40,          # Base Resource per level
+                               6.3,         # Base Resource per 5
+                               0.4,         # Base Resource per 5 per level
+                               55.52,       # Base Attack Damage
+                               3.1875,      # Base Attack Damage per level
+                               0.625,       # Base Attack Speed
+                               0.0163,      # Base Attack Speed per level
+                               17.75,       # Base Armor
+                               3.25,        # Base Armor per level
+                               30,          # Base Magic Resistance
+                               1.25,        # Base Magic Resistance per level
+                               345,         # Base Movement Speed
+                               125,         # Base Range
+                               "Mana",      # Resource
+                               [passive,    # Passive
+                                ability1,   # Ability 1 (Q/A)
+                                ability2,   # Ability 2 (W/Z)
+                                ability3,   # Ability 3 (E)
+                                ability4])  # Ability 4 (R)

@@ -9,26 +9,6 @@ class Jinx(champion.Champion):
   """
 
   def __init__(self):
-    # Basic stats
-    base_hp = 420
-    base_hp_plus = 80
-    base_hp5 = 5
-    base_hp5_plus = 0.5
-    base_mp = 170
-    base_mp_plus = 45
-    base_mp5 = 5
-    base_mp5_plus = 1
-    base_ad = 50
-    base_ad_plus = 3
-    base_as = 0.625
-    base_as_plus = 0.01
-    base_ar = 14
-    base_ar_plus = 3.5
-    base_mr = 30
-    base_mr_plus = 0
-    base_ms = 325
-    base_range = 525
-
     # Abilities
     # Passive - Get Excited!
     passive = ability.Ability(["Get Excited!"], ["Whenever a champion or "
@@ -73,11 +53,30 @@ class Jinx(champion.Champion):
     "percentage of the target's missing health. Nearby enemies take 80% "
     "damage."], "Ultimate", "Active", [(90, 75, 60)], [("100 Mana","100 Mana",
     "100 Mana",)], [("Global","Global","Global")])
-
-    champion.Champion.__init__(self, base_hp, base_hp_plus, base_hp5,
-                               base_hp5_plus, base_mp, base_mp_plus, base_mp5,
-                               base_mp5_plus, base_ad, base_ad_plus, base_as,
-                               base_as_plus, base_ar, base_ar_plus, base_mr,
-                               base_mr_plus, base_ms, base_range, [passive,
-                               ability1, ability2, ability3, ability4])
+    
+    champion.Champion.__init__(self,
+                               420,         # Base Health
+                               80,          # Base Health per level
+                               5,           # Base Health per 5
+                               0.5,         # Base Health per 5 per level
+                               170,         # Base Resource
+                               45,          # Base Resource per level
+                               5,           # Base Resource per 5
+                               1,           # Base Resource per 5 per level
+                               50,          # Base Attack Damage
+                               3,           # Base Attack Damage per level
+                               0.625,       # Base Attack Speed
+                               0.01,        # Base Attack Speed per level
+                               14,          # Base Armor
+                               3.5,         # Base Armor per level
+                               30,          # Base Magic Resistance
+                               0,           # Base Magic Resistance per level
+                               325,         # Base Movement Speed
+                               525,         # Base Range
+                               "Mana",      # Resource
+                               [passive,    # Passive
+                                ability1,   # Ability 1 (Q/A)
+                                ability2,   # Ability 2 (W/Z)
+                                ability3,   # Ability 3 (E)
+                                ability4])  # Ability 4 (R)
 

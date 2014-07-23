@@ -6,9 +6,16 @@ class Mastery(object):
   
   """
   
-  def __init__(self, tree, name, description, ranks, level, max_points,
-                     points_prerequisite, mastery_prerequisite=None,
-                     icon=None):
+  def __init__(self,
+               tree,
+               name,
+               description,
+               ranks,
+               level,
+               max_points,
+               points_prerequisite,
+               mastery_prerequisite=None,
+               icon=None):
     """ Create a new Mastery.
     
     Named parameters :

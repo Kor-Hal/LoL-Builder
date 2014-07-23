@@ -6,7 +6,8 @@ class RunePage(object):
   
   """
   
-  def __init__(self, name):
+  def __init__(self,
+               name):
     """Create a new empty Rune page.
     
     Named parameters :

@@ -9,26 +9,6 @@ class Ahri(champion.Champion):
   """
   
   def __init__(self):
-    # Basic stats
-    base_hp = 380
-    base_hp_plus = 80
-    base_hp5 = 5.5
-    base_hp5_plus = 0.6
-    base_mp = 230
-    base_mp_plus = 50
-    base_mp5 = 6.25
-    base_mp5_plus = 0.6
-    base_ad = 50
-    base_ad_plus = 3
-    base_as = 0.668
-    base_as_plus = 0.02
-    base_ar = 11
-    base_ar_plus = 3.5
-    base_mr = 30
-    base_mr_plus = 0
-    base_ms = 330
-    base_range = 550
-        
     # Abilities
     # Passive - Essence Theft
     passive = ability.Ability(["Essence Theft"], ["Ahri gains a charge of "
@@ -65,9 +45,28 @@ class Ahri(champion.Champion):
     "enemy can only be hit once per dash."], "Ultimate", "Active",
     [(110, 95, 80)], [(100,)])
     
-    champion.Champion.__init__(self, base_hp, base_hp_plus, base_hp5,
-                               base_hp5_plus, base_mp, base_mp_plus, base_mp5,
-                               base_mp5_plus, base_ad, base_ad_plus, base_as,
-                               base_as_plus, base_ar, base_ar_plus, base_mr,
-                               base_mr_plus, base_ms, base_range, "Mana",
-                               [passive,ability1,ability2,ability3,ability4])
+    champion.Champion.__init__(self,
+                               380,         # Base Health
+                               80,          # Base Health per level
+                               5.5,         # Base Health per 5
+                               0.6,         # Base Health per 5 per level
+                               230,         # Base Resource
+                               50,          # Base Resource per level
+                               6.25,        # Base Resource per 5
+                               0.6,         # Base Resource per 5 per level
+                               50,          # Base Attack Damage
+                               3,           # Base Attack Damage per level
+                               0.668,       # Base Attack Speed
+                               0.02,        # Base Attack Speed per level
+                               11,          # Base Armor
+                               3.5,         # Base Armor per level
+                               30,          # Base Magic Resistance
+                               0,           # Base Magic Resistance per level
+                               330,         # Base Movement Speed
+                               550,         # Base Range
+                               "Mana",      # Resource
+                               [passive,    # Passive
+                                ability1,   # Ability 1 (Q/A)
+                                ability2,   # Ability 2 (W/Z)
+                                ability3,   # Ability 3 (E)
+                                ability4])  # Ability 4 (R)
