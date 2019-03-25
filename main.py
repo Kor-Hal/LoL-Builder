@@ -1,38 +1,12 @@
 # -*-coding:utf-8 -*
 import os, pickle
 
-from packages.basics import * # Defining MasteryPage and RunePage
+from packages.basics import * # Defining Basics mechanics
 from packages.champions import * # Defining all champions' classes
 
 if __name__ == '__main__':
-  # Loading masteries from masteries.pickle file, if it exists.
-  # If not, we create a list with one empty mastery page
-  try:
-    with open('masteries.pickle', 'rb') as masteries_file:
-      masteries = pickle.load(masteries_file)
-  except IOError:
-    temp = MasteryPage("Mastery Page 1", offense_masteries, defense_masteries,
-                                         utility_masteries)
-    masteries = [temp]
   
-  # Loading runes from runes.pickle file, if it exists.
-  # If not, we create a list with one empty rune page
-  try:
-    with open('runes.pickle', 'rb') as runes_file:
-      runes = pickle.load(runes_file)
-  except IOError:
-    temp = RunePage("Rune Page 1")
-    runes = [temp]
-  
-  masteries[0].offense_tree.masteries[(1,3)].level = 4
-  masteries[0].offense_tree.masteries[(2,2)].level = 4
-  masteries[0].offense_tree.masteries[(3,1)].level = 3
-  masteries[0].offense_tree.masteries[(3,2)].level = 1
-  masteries[0].offense_tree.masteries[(4,2)].level = 2
-
   current_champ = Jinx()
-  current_champ.masteries = masteries[0]
-  current_champ.runes = runes[0]
   current_champ.currentLevel = 18
   text = ("{}, au niveau {}, possède {} points de vie, {} régénération de vie "
   "toutes les 5 secondes, {} points de mana, {} régénération de mana toutes "
@@ -40,7 +14,7 @@ if __name__ == '__main__':
   "points de résistance magique, {} en vitesse de déplacement et {} range")
   print(text.format(current_champ.__class__.__name__, current_champ.currentLevel, 
   current_champ.current_hp(), current_champ.current_hp5(),
-  current_champ.current_mp(), current_champ.current_mp5(),
+  current_champ.current_resource(), current_champ.current_resource5(),
   current_champ.current_ad(), current_champ.current_as(),
   current_champ.current_ar(), current_champ.current_mr(),
   current_champ.current_ms(), current_champ.current_range()))
@@ -70,17 +44,9 @@ if __name__ == '__main__':
   "points de résistance magique, {} en vitesse de déplacement et {} range")
   print(text.format(current_champ.__class__.__name__, current_champ.currentLevel,
   current_champ.current_hp(), current_champ.current_hp5(),
-  current_champ.current_mp(), current_champ.current_mp5(),
+  current_champ.current_resource(), current_champ.current_resource5(),
   current_champ.current_ad(), current_champ.current_as(),
   current_champ.current_ar(), current_champ.current_mr(),
   current_champ.current_ms(), current_champ.current_range()))
 
-  # Saving masteries to masteries.pickle file
-  with open('masteries.pickle', 'wb') as masteries_file:
-    pickle.dump(masteries, masteries_file)
-  
-  # Saving runes to runes.pickle file
-  with open('runes.pickle', 'wb') as runes_file:
-    pickle.dump(runes, runes_file)
-  
   os.system("pause")

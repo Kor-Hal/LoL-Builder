@@ -30,8 +30,6 @@ class Champion(metaclass=ABCMeta):
                base_range=None,
                resource=None,
                abilities=None,
-               masteries=None,
-               runes=None,
                itemsSet={"Slot 1":None, "Slot 2":None, "Slot 3":None,
                          "Slot 4":None, "Slot 5":None, "Slot 6":None}):
     """Initializing the basic stats.
@@ -83,8 +81,6 @@ class Champion(metaclass=ABCMeta):
     self._base_range = base_range
     self._resource = resource
     self._abilities = abilities
-    self._masteries = masteries
-    self._runes = runes
     self._itemsSet = itemsSet
     
     self._currentLevel = 0
@@ -203,24 +199,6 @@ class Champion(metaclass=ABCMeta):
     return self._abilities
   
   @property
-  def masteries(self):
-   """Champion's masteries."""
-   return self._masteries
-  
-  @masteries.setter
-  def masteries(self, value):
-    self._masteries = value
-  
-  @property
-  def runes(self):
-   """Champion's runes"""
-   return self._runes
-  
-  @runes.setter
-  def runes(self, value):
-    self._runes = value
-  
-  @property
   def itemsSet(self):
    """Champion's items"""
    return self._itemsSet
@@ -236,66 +214,48 @@ class Champion(metaclass=ABCMeta):
       raise ValueError
     else:
       self._currentLevel = value
+	  
+  # Defining generic stat growth function
+  def current_stat_value(self, base, growth, level):
+    return base + growth * (level - 1) * (0.7025 + 0.0175 * (level - 1))
   
   # Defining current stats functions. They'll be implemented in every subclass
   # that needs specific calculations
 
   def current_hp(self):
     total = 0
-    total += self.base_hp + self.base_hp_plus * self.currentLevel
-    if self.runes is not None:
-      total += self.runes.health + self.runes.scaling_health * self.currentLevel
-    if self.masteries is not None:
-      total += self.masteries.health + self.masteries.scaling_health * self.currentLevel
-    
+    total += self.current_stat_value(self.base_hp, self.base_hp_plus, self.currentLevel)
+        
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].health
     
-    perc_hp = 0
-    if self.runes is not None:
-      perc_hp += self.runes.percent_health
-    if self.masteries is not None:
-      perc_hp += self.masteries.percent_health
-
-    total *= 1 + perc_hp
-
     return round(total, 2)
     
   def current_hp5(self):
     total = 0
-    total += self.base_hp5 + self.base_hp5_plus * self.currentLevel
-    if self.runes is not None:
-      total += (self.runes.health_regeneration +
-                self.runes.scaling_health_regeneration * self.currentLevel)
-    
+    total += self.current_stat_value(self.base_hp5, self.base_hp5_plus, self.currentLevel)
+        
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].health_regeneration
 
     return round(total, 2)
     
-  def current_mp(self):
+  def current_resource(self):
     total = 0
-    total += self.base_resource + self.base_resource_plus * self.currentLevel
-    if self.runes is not None:
-      total += self.runes.mana + self.runes.scaling_mana * self.currentLevel
-    if self.masteries is not None:
-      total += self.masteries.scaling_mana * self.currentLevel
-    
+    total += self.current_stat_value(self.base_resource, self.base_resource_plus, self.currentLevel)
+        
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].mana
 
     return round(total, 2)
     
-  def current_mp5(self):
+  def current_resource5(self):
     total = 0
-    total += self.base_resourceper5 + self.base_resourceper5_plus * self.currentLevel
-    if self.runes is not None:
-      total += (self.runes.mana_regeneration +
-                self.runes.scaling_mana_regeneration * self.currentLevel)
-    
+    total += self.current_stat_value(self.base_resourceper5, self.base_resourceper5_plus, self.currentLevel)
+        
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].mana_regeneration
@@ -304,14 +264,8 @@ class Champion(metaclass=ABCMeta):
     
   def current_ad(self):
     total = 0
-    total += self.base_ad + self.base_ad_plus * self.currentLevel
-    if self.runes is not None:
-      total += (self.runes.attack_damage + self.runes.scaling_attack_damage *
-                                            self.currentLevel)
-    if self.masteries is not None:
-      total += (self.masteries.attack_damage +
-                self.masteries.scaling_attack_damage * self.currentLevel)
-    
+    total += self.current_stat_value(self.base_ad, self.base_ad_plus, self.currentLevel)
+        
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].attack_damage
@@ -322,10 +276,6 @@ class Champion(metaclass=ABCMeta):
     perc_as = 0
     perc_as += self.base_as_plus * (self.currentLevel - 1)
     
-    if self.runes is not None:
-      perc_as += self.runes.attack_speed
-    if self.masteries is not None:
-      perc_as += self.masteries.attack_speed
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         perc_as += self.itemsSet[key].attack_speed
@@ -337,12 +287,8 @@ class Champion(metaclass=ABCMeta):
     
   def current_ar(self):
     total = 0
-    total += self.base_ar + self.base_ar_plus * self.currentLevel
-    if self.runes is not None:
-      total += self.runes.armor + self.runes.scaling_armor * self.currentLevel
+    total += self.current_stat_value(self.base_ar, self.base_ar_plus, self.currentLevel)
     
-    if self.masteries is not None:
-      total += self.masteries.armor
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].armor
@@ -351,13 +297,8 @@ class Champion(metaclass=ABCMeta):
     
   def current_mr(self):
     total = 0
-    total += self.base_mr + self.base_mr_plus * self.currentLevel
-    if self.runes is not None:
-      total += (self.runes.magic_resistance +
-                self.runes.scaling_magic_resistance * self.currentLevel)
+    total += self.current_stat_value(self.base_mr, self.base_mr_plus, self.currentLevel)
     
-    if self.masteries is not None:
-      total += self.masteries.magic_resistance
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].magic_resistance
@@ -367,15 +308,13 @@ class Champion(metaclass=ABCMeta):
   def current_ms(self):
     total = 0
     total += self.base_ms
-    if self.masteries is not None:
-      total += self.masteries.movement_speed
+    
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         total += self.itemsSet[key].flat_movement_speed
 
     perc_ms = 0
-    if self.runes is not None:
-      perc_ms += self.runes.percent_movement_speed
+    
     for key in self.itemsSet.keys():
       if self.itemsSet[key] is not None:
         perc_ms += self.itemsSet[key].perc_movement_speed
