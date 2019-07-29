@@ -1,5 +1,5 @@
 # -*-coding:utf-8 -*
-import os, pickle
+import os
 
 from packages.basics import * # Defining Basics mechanics
 from packages.champions import * # Defining all champions' classes
