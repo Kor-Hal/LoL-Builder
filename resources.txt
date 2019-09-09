@@ -3,5 +3,3 @@ https://leagueoflegends.fandom.com/api.php?action=query&prop=revisions&titles=Lu
 https://leagueoflegends.fandom.com/api.php?action=parse&pageid=1295165 -- Lulu Abilities
 https://leagueoflegends.fandom.com/api.php?action=parse&page=Template:Data_Lulu -- Pour les stats + lien vers Abilities
 https://leagueoflegends.fandom.com/api.php?action=parse&page=Template:Data_Lulu/R&redirects=yes&prop=wikitext -- I, Q, W, E, R
-
-https://leagueoflegends.fandom.com/api.php?action=query&titles=Template:Data%20Lulu/Wild%20Growth -- Trouver les pageid d'une liste de titles
