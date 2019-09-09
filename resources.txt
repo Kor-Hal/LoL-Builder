@@ -1,7 +1,29 @@
-https://leagueoflegends.fandom.com/api.php?action=query&format=json&titles=List_of_champions
-https://leagueoflegends.fandom.com/api.php?action=query&prop=revisions&titles=Lulu&rvprop=content&format=json
-https://leagueoflegends.fandom.com/api.php?action=parse&pageid=1295165 -- Lulu Abilities
-https://leagueoflegends.fandom.com/api.php?action=parse&page=Template:Data_Lulu -- Pour les stats + lien vers Abilities
-https://leagueoflegends.fandom.com/api.php?action=parse&page=Template:Data_Lulu/R&redirects=yes&prop=wikitext -- I, Q, W, E, R
+https://leagueoflegends.fandom.com/api.php?action=query&generator=categorymembers&gcmtitle=Category:Released champion&gcmlimit=200 -- Liste des champions avec leur title et pageid
+https://leagueoflegends.fandom.com/api.php?action=query&pageids=971888&generator=links&gpllimit=200&gpltitles=Aatrox/Abilities&prop=links&pllimit=200&plnamespace=10 -- Capacités d'Aatrox depuis le pageid du champion
+https://leagueoflegends.fandom.com/api.php?action=parse&page=Template:Data%20Aatrox/Deathbringer%20Stance&redirects=true&prop=wikitext|revid -- Wikitext de la dernière révision d'un skill
 
-https://leagueoflegends.fandom.com/api.php?action=query&titles=Template:Data%20Lulu/Wild%20Growth -- Trouver les pageid d'une liste de titles
+https://leagueoflegends.fandom.com/wiki/Template:Ability_info/doc -- Infos principales
+https://leagueoflegends.fandom.com/wiki/Template:Ability_details/New/doc -- Contient les notes et autres détails annexes
+https://leagueoflegends.fandom.com/wiki/Template:Ability/doc -- Regroupement des 2 précédents (c'est celui là qui contient tous les paramètres possibles)
+
+{{Ability|Deathbringer Stance||||
+|champion     = Aatrox
+|skill        = I
+|icon         = Deathbringer Stance.png
+|blurb        = 
+|description  = {{sbc|Innate:}} '''Aatrox''' periodically empowers his next basic attack to gain {{sti|range|50 '''bonus''' range}} and deal {{as|{{pp|key=%|5 to 12}} of the target's '''maximum''' health}} as {{tip|physical damage|{{as|'''bonus''' physical damage}}}} [[on-hit]], capped at 100 against monsters, and {{tip|heal|healing}} him for the {{as|'''bonus''' physical damage}} dealt.
+|description2 = ''Deathbringer Stance's'' {{sti|cooldown}} is reduced by 2 seconds whenever '''Aatrox''' hits a champion or large monster with a basic attack or an ability, doubled if he hits with the edge of {{ai|The Darkin Blade|Aatrox}}. The cooldown reduction for {{ai|The Darkin Blade|Aatrox}} applies only once and prioritizes for the unit hit by the edge.
+|static       = {{pp|24 to 12}}
+|targeting    = Passive
+|affects      = [[Self-targeted|Self]], Enemies
+|damagetype   = {{tip|Physical damage|Physical}}
+|spellshield  = 
+|spelleffects = 
+|projectile   = 
+|grounded     = 
+|knockdown    = 
+|notes        = 
+* '''Aatrox''' will assume stance when an enemy champion is in range of {{ai|Infernal Chains|Aatrox}}.
+* The empowered attack is given [[on-attack]]. Commanding an attack before ''Deathbringer Stance'' is avaiable, but hitting the target while it's available will not trigger the bonus damage.
+|yvideo       = Aatrox - Passive
+}}

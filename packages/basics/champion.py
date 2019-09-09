@@ -30,8 +30,8 @@ class Champion(metaclass=ABCMeta):
                base_range=None,
                resource=None,
                abilities=None,
-               itemsSet={"Slot 1":None, "Slot 2":None, "Slot 3":None,
-                         "Slot 4":None, "Slot 5":None, "Slot 6":None}):
+               itemsSet={"Slot_1":None, "Slot_2":None, "Slot_3":None,
+                         "Slot_4":None, "Slot_5":None, "Slot_6":None}):
     """Initializing the basic stats.
     
     Named parameters :

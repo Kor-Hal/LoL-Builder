@@ -20,7 +20,7 @@ class Ability(object):
     name -- Name of the ability (list to handle toggles)
     description -- Description of the ability, as seen in game
                    (list to handle toggles)
-    archetype -- Basic, Innate (= Passive) or Ultimate
+    archetype -- Basic, Innate or Ultimate
     kind -- Active, Passive, Toggle or Stance
     cooldown -- Ability's cooldown (default: None)
                 (tuple's list to handle toggles)
